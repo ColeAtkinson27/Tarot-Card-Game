@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b95fb39de2dd39945840ebe471fa3f0a, type: 3}
+  m_Name: Fool Journeys Start
+  m_EditorClassIdentifier: 
+  cardName: Journey's Start
+  cardDescription: Destroy this card.
+  cardCorruptionPassDescription: Gain 25 Soul Taint
+  cardCorruptionFailDescription: Take 5-10 Physical damage
+  cardFlavor: 
+  cardAffinity: 5
+  cardAllyTargets: 4
+  cardEnemyTargets: 0
+  cardColor: {r: 0, g: 0, b: 0, a: 0}
+  exiled: 1
+  bossCard: 1
+  cardIcons: 0900000017000000000000000000000000000000
+  cardBackIcons: 0300000002000000000000000000000000000000
+  cardAnimation: 
+  cardEffects: []
+  cardCorPass:
+  - value1: 0
+    value2: 0
+    value3: 25
+    stringValue: 
+    targetType: 4
+    caster: {fileID: 0}
+  cardCorFail:
+  - value1: 1
+    value2: 6
+    value3: 4
+    stringValue: 
+    targetType: 4
+    caster: {fileID: 0}
