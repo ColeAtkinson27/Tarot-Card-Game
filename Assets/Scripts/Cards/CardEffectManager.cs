@@ -89,7 +89,8 @@ public static class CardEffectManager {
                 modifier--;
                 caster.Status.ATKBonus++;
             }
-        } else if (target.Status.DEFBonus != 0) {
+        }
+        if (target.Status.DEFBonus != 0) {
             if (target.Status.DEFBonus > 0) {
                 modifier--;
                 target.Status.DEFBonus--;

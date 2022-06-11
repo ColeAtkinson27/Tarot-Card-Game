@@ -46,8 +46,34 @@ public class PartyCharacter : Character
 
         //animator.SetTrigger("Attack");
         //AudioManager.audioMgr.PlayCharacterSFX(SFX, "Attack");
+        //Calculate atk/def bonuses
 
-        target.Health -= damage.Value;
+        int modifier = 0;
+        if (status.ATKBonus != 0) {
+            if (status.ATKBonus > 0) {
+                modifier++;
+                status.ATKBonus--;
+            } else {
+                modifier--;
+                status.ATKBonus++;
+            }
+        }
+        if (target.Status.DEFBonus != 0) {
+            if (target.Status.DEFBonus > 0) {
+                modifier--;
+                target.Status.DEFBonus--;
+            } else {
+                modifier++;
+                target.Status.DEFBonus++;
+            }
+        }
+        int damVal = damage.Value;
+        if (modifier == -2) damVal /= 4;
+        else if (modifier == -1) damVal /= 2;
+        else if (modifier == 1) damVal = (int)(damVal * 1.5f);
+        else if (modifier == 2) damVal *= 2;
+
+        target.Health -= damVal;
     }
 
     //Executes the character's turn, where they either play their card or attack
