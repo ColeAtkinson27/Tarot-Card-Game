@@ -34,6 +34,7 @@ MonoBehaviour:
     stringValue: 
     targetType: 0
     caster: {fileID: 0}
+    effectType: 34
   cardCorFail:
   - value1: 2
     value2: 0
@@ -41,3 +42,4 @@ MonoBehaviour:
     stringValue: 
     targetType: 0
     caster: {fileID: 0}
+    effectType: 12

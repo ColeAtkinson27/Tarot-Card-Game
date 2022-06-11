@@ -6,8 +6,10 @@ using UnityEngine.SceneManagement;
 public class TempMainMenuScript : MonoBehaviour {
     [SerializeField] private GameObject MainMenu;
     [SerializeField] private GameObject HelpMenu;
+    [SerializeField] private GameObject[] HelpPages = new GameObject[10];
     [SerializeField] private GameObject CardsMenu;
     [SerializeField] private GameObject SymbolsMenu;
+    private int helpIndex;
 
     public void MultiDeckStart() { SceneManager.LoadScene(1); }
     public void SingleDeckStart() { SceneManager.LoadScene(2); }
@@ -15,6 +17,8 @@ public class TempMainMenuScript : MonoBehaviour {
     public void Help(bool toggle) {
         HelpMenu.SetActive(toggle);
         MainMenu.SetActive(!toggle);
+        helpIndex = 0;
+        SetHelpPage();
     }
 
     public void Cards(bool toggle) {
@@ -24,5 +28,23 @@ public class TempMainMenuScript : MonoBehaviour {
     public void Symbols(bool toggle) {
         SymbolsMenu.SetActive(toggle);
         MainMenu.SetActive(!toggle);
+    }
+
+    public void SetHelpPage() {
+        for (int i = 0; i < 10; i++) {
+            HelpPages[i].SetActive(false);
+        }
+        HelpPages[helpIndex].SetActive(true);
+    }
+
+    public void HelpNextPage() {
+        if (helpIndex >= 9) return;
+        helpIndex++;
+        SetHelpPage();
+    }
+    public void HelpPreviousPage() {
+        if (helpIndex == 0) return;
+        helpIndex--;
+        SetHelpPage();
     }
 }

@@ -204,4 +204,33 @@ public class CombatUIManager : MonoBehaviour {
         if (toggle)
             Debug.Log($"<color=Yellow>Discard Enabled</color>");
     }
+
+    //TEMPORARY HELP//
+    [SerializeField] private GameObject HelpMenu;
+    [SerializeField] private GameObject[] HelpPages = new GameObject[10];
+    private int helpIndex;
+    public void Help(bool toggle) {
+        HelpMenu.SetActive(toggle);
+        combatUI.SetActive(!toggle);
+        helpIndex = 0;
+        SetHelpPage();
+    }
+
+    public void SetHelpPage() {
+        for (int i = 0; i < 10; i++) {
+            HelpPages[i].SetActive(false);
+        }
+        HelpPages[helpIndex].SetActive(true);
+    }
+
+    public void HelpNextPage() {
+        if (helpIndex >= 9) return;
+        helpIndex++;
+        SetHelpPage();
+    }
+    public void HelpPreviousPage() {
+        if (helpIndex == 0) return;
+        helpIndex--;
+        SetHelpPage();
+    }
 }
