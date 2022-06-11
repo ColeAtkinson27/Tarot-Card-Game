@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 05023242dcefaa84ea20fd4b09214819, type: 3}
-  m_Name: PC Pentacle Staff
+  m_Name: Janet
   m_EditorClassIdentifier: 
-  primaryAffinity: 2
-  secondaryAffinity: 3
-  name: Jeff
+  primaryAffinity: 3
+  secondaryAffinity: 4
+  name: Janet
   maxHealth: 25
-  avatar: {fileID: 21300000, guid: 1d2706baca253c54faadad50ff815311, type: 3}
+  avatar: {fileID: 21300000, guid: 15d3b3894d54193428474ea40dba9b9c, type: 3}
   BossDeck: []
   orderSpeed: 4
   basicAttack:

@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 05023242dcefaa84ea20fd4b09214819, type: 3}
-  m_Name: PC Staff Sword
+  m_Name: Julia
   m_EditorClassIdentifier: 
-  primaryAffinity: 3
-  secondaryAffinity: 4
-  name: Janet
-  maxHealth: 25
-  avatar: {fileID: 21300000, guid: 15d3b3894d54193428474ea40dba9b9c, type: 3}
+  primaryAffinity: 1
+  secondaryAffinity: 3
+  name: Julia
+  maxHealth: 15
+  avatar: {fileID: 21300000, guid: bcced95e9738ab241982ccecf8d7573c, type: 3}
   BossDeck: []
   orderSpeed: 4
   basicAttack:

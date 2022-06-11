@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 05023242dcefaa84ea20fd4b09214819, type: 3}
-  m_Name: PC Chalice Staff
+  m_Name: Jeff
   m_EditorClassIdentifier: 
-  primaryAffinity: 1
+  primaryAffinity: 2
   secondaryAffinity: 3
-  name: Julia
-  maxHealth: 15
-  avatar: {fileID: 21300000, guid: bcced95e9738ab241982ccecf8d7573c, type: 3}
+  name: Jeff
+  maxHealth: 25
+  avatar: {fileID: 21300000, guid: 1d2706baca253c54faadad50ff815311, type: 3}
   BossDeck: []
   orderSpeed: 4
   basicAttack:
