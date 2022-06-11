@@ -12,7 +12,7 @@ public class CardEffect {
     public Enums.Target targetType;
 
     public Character caster;
-    public Enums.CardEffects effectType;
+    private Enums.CardEffects effectType;
 
     public Enums.CardEffects EffectType { 
         get { return effectType; } 

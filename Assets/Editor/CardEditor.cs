@@ -99,10 +99,24 @@ public class CardEditor : Editor {
     private void InsertCardEffectFields(SerializedProperty effectsList, int listNo) {
         //Go through each effect in the list
         for (int i = 0; i < effectsList.arraySize; i++) {
+            #region CARD DATA
+            CardEffectBuffer = effectsList.GetArrayElementAtIndex(i);
+            #endregion
+
+            #region EFFECT TYPES
+            SerializedProperty effectType = CardEffectBuffer.FindPropertyRelative("effectType");
+            SerializedProperty value1 = CardEffectBuffer.FindPropertyRelative("value1");
+            SerializedProperty value2 = CardEffectBuffer.FindPropertyRelative("value2");
+            SerializedProperty value3 = CardEffectBuffer.FindPropertyRelative("value3");
+            SerializedProperty stringValue = CardEffectBuffer.FindPropertyRelative("stringValue");
+            SerializedProperty targetType = CardEffectBuffer.FindPropertyRelative("targetType");
+            #endregion
+
             effect = card.GetEffect(i, listNo);
             //Add the effect dropdown select, and remove button
             GUILayout.BeginHorizontal();
-            effect.EffectType = (Enums.CardEffects)EditorGUILayout.EnumPopup("Card Effect", effect.EffectType);
+            EditorGUILayout.PropertyField(effectType, new GUIContent("Card Effect"));
+            //effectType = EditorGUILayout.EnumPopup("Card Effect", effect.EffectType);
             if (i != 0) {
                 if (GUILayout.Button("Up", EditorStyles.miniButtonLeft, GUILayout.Width(30f))) {
                     //SerializedProperty buffer = effectsList.GetArrayElementAtIndex(i - 1);
@@ -121,19 +135,6 @@ public class CardEditor : Editor {
                 continue;
             }
             GUILayout.EndHorizontal();
-
-            #region CARD DATA
-            CardEffectBuffer = effectsList.GetArrayElementAtIndex(i);
-            #endregion
-
-            #region EFFECT TYPES
-            SerializedProperty value1 = CardEffectBuffer.FindPropertyRelative("value1");
-            SerializedProperty value2 = CardEffectBuffer.FindPropertyRelative("value2");
-            SerializedProperty value3 = CardEffectBuffer.FindPropertyRelative("value3");
-            SerializedProperty stringValue = CardEffectBuffer.FindPropertyRelative("stringValue");
-            SerializedProperty targetType = CardEffectBuffer.FindPropertyRelative("targetType");
-            SerializedProperty numTargets = CardEffectBuffer.FindPropertyRelative("numTargets");
-            #endregion
 
             //Draw input fields based on chosen effect
             switch (effect.EffectType) {
