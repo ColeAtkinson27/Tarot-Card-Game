@@ -52,7 +52,10 @@ public static class Enums {
         Pentacle,
         Staff,
         Sword,
-        Fool
+        Fool,
+        Magician,
+        Priestess,
+        Empress
     };
 
     /** <summary>A list of possible actions a character can take</summary> */
