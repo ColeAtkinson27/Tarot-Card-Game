@@ -271,6 +271,7 @@ public class CardEditor : Editor {
                 case Enums.CardEffects.Slow:
                     break;
                 case Enums.CardEffects.Soothe:
+                    EditorGUILayout.PropertyField(value3, new GUIContent("Value"));
                     if (listNo == 0) AddStandardFields(targetType);
                     break;
                 case Enums.CardEffects.Stun:
