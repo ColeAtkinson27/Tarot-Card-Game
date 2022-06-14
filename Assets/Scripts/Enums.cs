@@ -130,4 +130,14 @@ public static class Enums {
         Corruption_Fail,
         Corruption_Pass
     }
+
+    public enum Items {
+        BagOfTricks,
+        SpellBook,
+        PrayerBeads,
+        EverbloomSeedling,
+        SpikedGauntlets,
+        MentorsGlasses,
+        TwinRoses
+    }
 }
