@@ -192,7 +192,7 @@ public class PlayerMovement : MonoBehaviour {
         Vector3 startPos = transform.position;
         Vector3 targetPos;
         if (atTop)
-            targetPos = new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z) + (transform.forward * 0.5f);
+            targetPos = new Vector3(transform.position.x, transform.position.y + 3f, transform.position.z) + (transform.forward * 0.5f);
         else
             targetPos = new Vector3(transform.position.x, transform.position.y -0.25f, transform.position.z) + (-transform.forward * 0.5f);
 
@@ -222,8 +222,7 @@ public class PlayerMovement : MonoBehaviour {
         isShimmying = false;
         animator.SetBool("isRunning", false);
         Vector3 startPos = transform.position;
-        Vector3 targetPos = transform.position;
-        // - (transform.forward * 0.5f)
+        Vector3 targetPos = transform.position - (transform.forward * 0.5f);
 
         float time = 0f;
         animator.SetBool("isShimmying", false);

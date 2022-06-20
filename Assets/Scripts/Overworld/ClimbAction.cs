@@ -10,10 +10,10 @@ public class ClimbAction : EnvironmentAction {
     void Start () {
         if (climbWall) {
             targetHeights[0] = transform.position.y + 0.25f;
-            targetHeights[1] = Target.position.y - 1.5f;
+            targetHeights[1] = Target.position.y - 3f;
         } else {
             targetHeights[0] = Target.position.y + 0.25f;
-            targetHeights[1] = transform.position.y - 1.5f;
+            targetHeights[1] = transform.position.y - 3f;
         }
     }
 
@@ -38,7 +38,7 @@ public class ClimbAction : EnvironmentAction {
         else {
             if (freezeAxes[0]) x = player.transform.position.x; else x = Target.position.x;
             if (freezeAxes[2]) z = player.transform.position.z; else z = Target.position.z;
-            targetPos = new Vector3(x, targetHeights[1] - 0.1f, z);
+            targetPos = new Vector3(x, targetHeights[1] - 0.05f, z);
         }
         player.transform.LookAt(LookAtPos());
         if (!climbWall)

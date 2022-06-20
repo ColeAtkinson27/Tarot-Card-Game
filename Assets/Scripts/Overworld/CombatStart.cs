@@ -6,8 +6,9 @@ public class CombatStart : MonoBehaviour {
 
     [SerializeField] private Enums.Affinity encounter;
 
-    private void OnCollisionEnter(Collision collision) {
-        if (collision.gameObject.tag == "Player")
+    void OnTriggerEnter(Collider collider) {
+        Debug.Log("<color=green>Fight Collision Detected</color>");
+        if (collider.gameObject.tag == "Player")
             StartCombat();
     }
 

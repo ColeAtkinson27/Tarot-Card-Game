@@ -214,7 +214,7 @@ public class GameManager : MonoBehaviour {
 
     public IEnumerator GameWinScreen(){
         yield return CombatUIManager.Instance.DisplayMessage("Congratulations", 6f);
-        SceneManager.LoadScene(0);
+        SceneController.Instance.ExitCombatScene();
     }
 
     public IEnumerator GameOverScreen(){

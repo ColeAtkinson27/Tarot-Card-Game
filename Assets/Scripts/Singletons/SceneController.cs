@@ -38,7 +38,10 @@ public class SceneController : MonoBehaviour {
 
     public void LoadScene(string sceneName) {
         try {
+            for (int i = 0; i < levels.Count; i++)
+                if (levels[i].name == sceneName) return;
             SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
+            Debug.Log("<color=yellow>Loaded Scene: </color>" + sceneName);
         } catch (Exception e) {
             Debug.Log("<color=red>Load scene error:</color> " + e.ToString() + "\n" + e.StackTrace);
             SceneManager.LoadScene(0);
@@ -81,13 +84,18 @@ public class SceneController : MonoBehaviour {
     public void EnterCombatScene (Enums.Affinity boss) {
         switch(boss) {
             case Enums.Affinity.Fool:
-                SceneManager.LoadScene("Fight Fool", LoadSceneMode.Additive);
                 currentBoss = "Fight Fool";
                 break;
             default:
                 Debug.Log("<color=red>Load boss error:</color> " + boss + " is not a valid boss.");
-                break;
+                return;
         }
+        Player.gameObject.SetActive(false);
+        Camera.gameObject.SetActive(false);
+        foreach (SceneObject so in levels) {
+            so.gameObject.SetActive(false);
+        }
+        SceneManager.LoadScene(currentBoss, LoadSceneMode.Additive);
     }
 
     /**
@@ -96,6 +104,11 @@ public class SceneController : MonoBehaviour {
     public void ExitCombatScene () {
         try {
             SceneManager.UnloadSceneAsync(currentBoss);
+            Player.gameObject.SetActive(true);
+            Camera.gameObject.SetActive(true);
+            foreach (SceneObject so in levels) {
+                so.gameObject.SetActive(true);
+            }
         } catch (Exception e) {
             Debug.Log("<color=red>Unload boss error:</color> " + e.ToString() + "\n" + e.StackTrace);
         }

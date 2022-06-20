@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2776467366751149512}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: PausedCamTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2776467367253637465}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: CamTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 2776467367512950090}
   - component: {fileID: 2776467367512950091}
   - component: {fileID: 2776467367512950088}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Interaction Bubble
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -167,7 +167,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2776467368421357369}
   - component: {fileID: 3823161100728662316}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Interaction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -214,7 +214,7 @@ GameObject:
   - component: {fileID: 194196897142143842}
   - component: {fileID: 3047515851426329925}
   - component: {fileID: 3105567553851375267}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -396,7 +396,7 @@ GameObject:
   - component: {fileID: 6171641548180779739}
   - component: {fileID: 8408076815116905273}
   - component: {fileID: 2776467368507091925}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
