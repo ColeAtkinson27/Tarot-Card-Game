@@ -2099,7 +2099,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: 1ad17a6e1d88ec14abf6e23c23546835, type: 3}
 --- !u!4 &334668497 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 3976989390008065073, guid: 1ad17a6e1d88ec14abf6e23c23546835, type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 334668496}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &377359648
@@ -7265,6 +7265,18 @@ MonoBehaviour:
   cardDiscardDropZone: {fileID: 1273963691}
   combatUI: {fileID: 1509634501}
   symbolsUI: {fileID: 1201632663}
+  HelpMenu: {fileID: 0}
+  HelpPages:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &1292516139
 GameObject:
   m_ObjectHideFlags: 0

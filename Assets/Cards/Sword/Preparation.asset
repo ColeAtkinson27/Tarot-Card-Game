@@ -12,20 +12,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b95fb39de2dd39945840ebe471fa3f0a, type: 3}
   m_Name: Preparation
   m_EditorClassIdentifier: 
-  cardName: 
-  cardDescription: 
-  cardCorruptionPassDescription: 
-  cardCorruptionFailDescription: 
+  cardName: Preparation
+  cardDescription: Gain 15 Corruption
+  cardCorruptionPassDescription: Become Bolstered
+  cardCorruptionFailDescription: Become Fortified
   cardFlavor: 
-  cardAffinity: 0
+  cardAffinity: 4
   cardAllyTargets: 0
   cardEnemyTargets: 0
   cardColor: {r: 0, g: 0, b: 0, a: 0}
   exiled: 0
   bossCard: 0
-  cardIcons: 0000000000000000000000000000000000000000
-  cardBackIcons: 0000000000000000000000000000000000000000
+  cardIcons: 050000000f000000090000000000000000000000
+  cardBackIcons: 0300000002000000010000000000000000000000
   cardAnimation: 
-  cardEffects: []
-  cardCorPass: []
-  cardCorFail: []
+  cardEffects:
+  - value1: 0
+    value2: 0
+    value3: 15
+    stringValue: 
+    targetType: 1
+    caster: {fileID: 0}
+    effectType: 9
+  cardCorPass:
+  - value1: 1
+    value2: 0
+    value3: 0
+    stringValue: 
+    targetType: 0
+    caster: {fileID: 0}
+    effectType: 5
+  cardCorFail:
+  - value1: 1
+    value2: 0
+    value3: 0
+    stringValue: 
+    targetType: 0
+    caster: {fileID: 0}
+    effectType: 15

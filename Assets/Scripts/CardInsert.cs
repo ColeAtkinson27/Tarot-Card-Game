@@ -10,9 +10,9 @@ public class CardInsert : MonoBehaviour {
     public List<Card> sword;
     // Start is called before the first frame update
     void Awake() {
-        PlayerData.ChaliceCards.AddRange(chalice);
-        PlayerData.PentacleCards.AddRange(pentacle);
-        PlayerData.StaffCards.AddRange(staff);
-        PlayerData.SwordCards.AddRange(sword);
+        PlayerData.ChaliceCards = chalice;
+        PlayerData.PentacleCards = pentacle;
+        PlayerData.StaffCards = staff;
+        PlayerData.SwordCards = sword;
     }
 }

@@ -6461,7 +6461,7 @@ GameObject:
   - component: {fileID: 1103311569}
   - component: {fileID: 1103311568}
   m_Layer: 5
-  m_Name: SingleDeck Start
+  m_Name: Load
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6526,7 +6526,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1103311569}
   m_OnClick:
     m_PersistentCalls:
@@ -8260,7 +8260,7 @@ GameObject:
   - component: {fileID: 1265859405}
   - component: {fileID: 1265859404}
   m_Layer: 5
-  m_Name: MultiDeck Start
+  m_Name: New
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8332,7 +8332,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2036840598}
         m_TargetAssemblyTypeName: TempMainMenuScript, Assembly-CSharp
-        m_MethodName: MultiDeckStart
+        m_MethodName: NewGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8684,7 +8684,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Multi deck
+  m_text: New
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 78477f8e6b4a16547a2f2e2ca7a13013, type: 2}
   m_sharedMaterial: {fileID: 4968770330278741547, guid: 78477f8e6b4a16547a2f2e2ca7a13013, type: 2}
@@ -8939,7 +8939,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Single deck
+  m_text: Load
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 78477f8e6b4a16547a2f2e2ca7a13013, type: 2}
   m_sharedMaterial: {fileID: 4968770330278741547, guid: 78477f8e6b4a16547a2f2e2ca7a13013, type: 2}
@@ -14635,6 +14635,7 @@ GameObject:
   - component: {fileID: 2036840596}
   - component: {fileID: 2036840595}
   - component: {fileID: 2036840598}
+  - component: {fileID: 2036840599}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -14753,6 +14754,38 @@ MonoBehaviour:
   - {fileID: 767223711}
   CardsMenu: {fileID: 7758088710124778597}
   SymbolsMenu: {fileID: 1574268187}
+--- !u!114 &2036840599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2036840593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48a6e21c53d91934eb23edde8bc3b1c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chalice:
+  - {fileID: 11400000, guid: 57596e61aefd33c4aab2445e7293e219, type: 2}
+  - {fileID: 11400000, guid: 57596e61aefd33c4aab2445e7293e219, type: 2}
+  - {fileID: 11400000, guid: ff780db40985bd14d969d84735186e78, type: 2}
+  - {fileID: 11400000, guid: ac2ee400a703fd045b78f983b9674907, type: 2}
+  pentacle:
+  - {fileID: 11400000, guid: bd159f733a817e742afbe08951c3274d, type: 2}
+  - {fileID: 11400000, guid: bd159f733a817e742afbe08951c3274d, type: 2}
+  - {fileID: 11400000, guid: 46008208bf6f6eb4e9cde28ee0f69160, type: 2}
+  - {fileID: 11400000, guid: 7785c3fa7b322e84c91caa3772bbc803, type: 2}
+  staff:
+  - {fileID: 11400000, guid: 2cf619a56133a524b9ae34fcb58f1b86, type: 2}
+  - {fileID: 11400000, guid: 2cf619a56133a524b9ae34fcb58f1b86, type: 2}
+  - {fileID: 11400000, guid: 9be06d902cbd07546aaeb5f44feee430, type: 2}
+  - {fileID: 11400000, guid: dbfba49581a2bc94ebb3de0503395911, type: 2}
+  sword:
+  - {fileID: 11400000, guid: 8d0a72ccc47b29a4cb938a2a23606530, type: 2}
+  - {fileID: 11400000, guid: 8d0a72ccc47b29a4cb938a2a23606530, type: 2}
+  - {fileID: 11400000, guid: 1dd06b321878b884fb263c8ab3c4cef3, type: 2}
+  - {fileID: 11400000, guid: c00e168a85c5e63448ebf9512d83645f, type: 2}
 --- !u!1 &2040644320
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public static class PlayerData {
+    public static string location = "Jester's Playground";
+
     public static int[] party = new int[4];
 
     public static List<Card> ChaliceCards = new List<Card>();

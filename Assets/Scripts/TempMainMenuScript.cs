@@ -11,8 +11,11 @@ public class TempMainMenuScript : MonoBehaviour {
     [SerializeField] private GameObject SymbolsMenu;
     private int helpIndex;
 
-    public void MultiDeckStart() { SceneManager.LoadScene(1); }
-    public void SingleDeckStart() { SceneManager.LoadScene(2); }
+    public void NewGame() {
+        PlayerData.location = "Jester's Playground";
+        SceneManager.LoadScene("Base Scene"); 
+    }
+
     public void Exit() { Application.Quit(); }
     public void Help(bool toggle) {
         HelpMenu.SetActive(toggle);

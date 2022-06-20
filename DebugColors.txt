@@ -1,0 +1,5 @@
+Red = Errors
+Yellow = Load
+Green = 
+Blue = Files
+Purple = 

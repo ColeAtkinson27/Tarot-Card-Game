@@ -12,20 +12,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b95fb39de2dd39945840ebe471fa3f0a, type: 3}
   m_Name: Tainted Armor
   m_EditorClassIdentifier: 
-  cardName: 
-  cardDescription: 
+  cardName: Tainted Armor
+  cardDescription: Soothe 15 Soul Taint and Fortify the target.
   cardCorruptionPassDescription: 
   cardCorruptionFailDescription: 
   cardFlavor: 
-  cardAffinity: 0
-  cardAllyTargets: 0
+  cardAffinity: 1
+  cardAllyTargets: 1
   cardEnemyTargets: 0
   cardColor: {r: 0, g: 0, b: 0, a: 0}
   exiled: 0
   bossCard: 0
-  cardIcons: 0000000000000000000000000000000000000000
-  cardBackIcons: 0000000000000000000000000000000000000000
+  cardIcons: 090000000f000000000000000000000000000000
+  cardBackIcons: 0100000001000000000000000000000000000000
   cardAnimation: 
-  cardEffects: []
+  cardEffects:
+  - value1: 0
+    value2: 0
+    value3: 15
+    stringValue: 
+    targetType: 2
+    caster: {fileID: 0}
+    effectType: 33
+  - value1: 1
+    value2: 0
+    value3: 0
+    stringValue: 
+    targetType: 2
+    caster: {fileID: 0}
+    effectType: 15
   cardCorPass: []
   cardCorFail: []

@@ -12,20 +12,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b95fb39de2dd39945840ebe471fa3f0a, type: 3}
   m_Name: Risky Slash
   m_EditorClassIdentifier: 
-  cardName: 
-  cardDescription: 
-  cardCorruptionPassDescription: 
-  cardCorruptionFailDescription: 
+  cardName: Risky Slash
+  cardDescription: Deal 2-8 Physical damage
+  cardCorruptionPassDescription: No Effect
+  cardCorruptionFailDescription: Become Weakened
   cardFlavor: 
-  cardAffinity: 0
+  cardAffinity: 4
   cardAllyTargets: 0
-  cardEnemyTargets: 0
+  cardEnemyTargets: 1
   cardColor: {r: 0, g: 0, b: 0, a: 0}
   exiled: 0
   bossCard: 0
-  cardIcons: 0000000000000000000000000000000000000000
-  cardBackIcons: 0000000000000000000000000000000000000000
+  cardIcons: 2500000017000000000000000000000000000000
+  cardBackIcons: 0200000001000000000000000000000000000000
   cardAnimation: 
-  cardEffects: []
+  cardEffects:
+  - value1: 1
+    value2: 7
+    value3: 1
+    stringValue: 
+    targetType: 3
+    caster: {fileID: 0}
+    effectType: 23
   cardCorPass: []
-  cardCorFail: []
+  cardCorFail:
+  - value1: 1
+    value2: 0
+    value3: 0
+    stringValue: 
+    targetType: 0
+    caster: {fileID: 0}
+    effectType: 37

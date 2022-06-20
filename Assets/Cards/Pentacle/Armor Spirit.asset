@@ -12,20 +12,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b95fb39de2dd39945840ebe471fa3f0a, type: 3}
   m_Name: Armor Spirit
   m_EditorClassIdentifier: 
-  cardName: 
-  cardDescription: 
-  cardCorruptionPassDescription: 
-  cardCorruptionFailDescription: 
+  cardName: Armor Spirit
+  cardDescription: Gain 1 Armor.
+  cardCorruptionPassDescription: No effect
+  cardCorruptionFailDescription: Take 1-6 damage
   cardFlavor: 
-  cardAffinity: 0
+  cardAffinity: 2
   cardAllyTargets: 0
   cardEnemyTargets: 0
   cardColor: {r: 0, g: 0, b: 0, a: 0}
   exiled: 0
   bossCard: 0
-  cardIcons: 0000000000000000000000000000000000000000
-  cardBackIcons: 0000000000000000000000000000000000000000
+  cardIcons: 1700000002000000000000000000000000000000
+  cardBackIcons: 0200000001000000000000000000000000000000
   cardAnimation: 
-  cardEffects: []
+  cardEffects:
+  - value1: 1
+    value2: 0
+    value3: 0
+    stringValue: 
+    targetType: 2
+    caster: {fileID: 0}
+    effectType: 2
   cardCorPass: []
-  cardCorFail: []
+  cardCorFail:
+  - value1: 1
+    value2: 6
+    value3: 0
+    stringValue: 
+    targetType: 0
+    caster: {fileID: 0}
+    effectType: 23
