@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05023242dcefaa84ea20fd4b09214819, type: 3}
+  m_Name: 03 - The Priestess
+  m_EditorClassIdentifier: 
+  primaryAffinity: 7
+  secondaryAffinity: 0
+  name: Penitent Priestess
+  maxHealth: 80
+  avatar: {fileID: 0}
+  BossDeck:
+  - {fileID: 11400000, guid: fe818bbcba404b941b9c39581c9988b8, type: 2}
+  - {fileID: 11400000, guid: cb0f465c9f1a07c45b56e70447569d27, type: 2}
+  - {fileID: 11400000, guid: 710663cc10ee8e64a8865c3767a893b9, type: 2}
+  - {fileID: 11400000, guid: 343611aac3ed48b46b5a37438c6f5266, type: 2}
+  - {fileID: 11400000, guid: 3abe3ecdbdbd51c4588b763e09726c0d, type: 2}
+  orderSpeed: 2
+  basicAttack:
+    dieNum: 1
+    dieSize: 4
+    bonus: 0
+  weaknesses: 
+  resistances: 

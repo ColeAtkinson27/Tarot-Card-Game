@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour {
     [Header("Arena Information")]
     [SerializeField] private Transform[] playerPositions = new Transform[4];
     [SerializeField] private Transform lookPosition;
+    [SerializeField] private CardDraftPool Reward;
 
     [Header("Combatants")]
     [SerializeField] private List<Character> party = new List<Character>();
@@ -59,7 +60,7 @@ public class GameManager : MonoBehaviour {
         StartCoroutine(battleEnumerator);
     }
 
-    //Loops through turns untill the battleEnumerator is stopped (By CheckGameOver)
+    //Loops through turns until the battleEnumerator is stopped (By CheckGameOver)
     public IEnumerator ExecuteBattle() {
         foreach (Character c in party)
             turns.Add(c);
@@ -214,12 +215,13 @@ public class GameManager : MonoBehaviour {
 
     public IEnumerator GameWinScreen(){
         yield return CombatUIManager.Instance.DisplayMessage("Congratulations", 6f);
+        UIManager.Instance.StartDraft(Reward);
         SceneController.Instance.ExitCombatScene();
     }
 
     public IEnumerator GameOverScreen(){
         yield return CombatUIManager.Instance.DisplayMessage("Everyone has fallen...", 2f);
-        yield return CombatUIManager.Instance.DisplayMessage("Your soul was claimed by the River", 4f);
+        yield return CombatUIManager.Instance.DisplayMessage("Your soul was claimed by the denizen", 4f);
         SceneManager.LoadScene(0);
     }
 

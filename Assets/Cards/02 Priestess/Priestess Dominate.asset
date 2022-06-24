@@ -12,20 +12,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b95fb39de2dd39945840ebe471fa3f0a, type: 3}
   m_Name: Priestess Dominate
   m_EditorClassIdentifier: 
-  cardName: 
-  cardDescription: 
+  cardName: Dominate
+  cardDescription: Deal 1-6 Physical damage to two targets, and Bolster the caster.
   cardCorruptionPassDescription: 
-  cardCorruptionFailDescription: 
+  cardCorruptionFailDescription: Weaken and Cripple the target
   cardFlavor: 
   cardAffinity: 7
-  cardAllyTargets: 0
+  cardAllyTargets: 2
   cardEnemyTargets: 0
   cardColor: {r: 0, g: 0, b: 0, a: 0}
   exiled: 0
-  bossCard: 0
-  cardIcons: 0000000000000000000000000000000000000000
-  cardBackIcons: 0000000000000000000000000000000000000000
+  bossCard: 1
+  cardIcons: 250000000a000000170000000500000000000000
+  cardBackIcons: 0200000002000000010000000100000000000000
   cardAnimation: 
-  cardEffects: []
+  cardEffects:
+  - value1: 1
+    value2: 6
+    value3: 0
+    stringValue: 
+    targetType: 2
+    caster: {fileID: 0}
+    effectType: 23
+  - value1: 1
+    value2: 0
+    value3: 0
+    stringValue: 
+    targetType: 1
+    caster: {fileID: 0}
+    effectType: 5
   cardCorPass: []
-  cardCorFail: []
+  cardCorFail:
+  - value1: 1
+    value2: 0
+    value3: 0
+    stringValue: 
+    targetType: 0
+    caster: {fileID: 0}
+    effectType: 37
+  - value1: 1
+    value2: 0
+    value3: 0
+    stringValue: 
+    targetType: 0
+    caster: {fileID: 0}
+    effectType: 10

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SceneObject : MonoBehaviour {
 
@@ -11,9 +12,13 @@ public class SceneObject : MonoBehaviour {
     public string Scene { get { return scene; } }
 
     void Start() {
-        SceneController.Instance.AddScene(this);
-        for (int i = 0; i < connectors.Count; i++)
-            SceneController.Instance.LoadScene(connectors[i]);
+        try {
+            SceneController.Instance.AddScene(this);
+            for (int i = 0; i < connectors.Count; i++)
+                SceneController.Instance.LoadScene(connectors[i]);
+        } catch (System.Exception e) {
+            SceneManager.LoadScene(0);
+        }
     }
 
     public void UseLighting(bool useLighting) {

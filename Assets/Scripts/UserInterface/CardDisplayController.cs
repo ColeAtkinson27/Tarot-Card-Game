@@ -12,34 +12,22 @@ public class CardDisplayController : MonoBehaviour, IPointerEnterHandler, IPoint
     public static GameObject cardDisplayPrefab;
 
     internal int Handx;
+    private bool isSelected;
     private Card cardData;
 
+    [Header("Card Display")]
     [SerializeReference] private TextMeshProUGUI name;
     [SerializeReference] private TextMeshProUGUI description;
-    [SerializeReference] private TextMeshProUGUI corrPass;
-    [SerializeReference] private TextMeshProUGUI corrFail;
     [SerializeReference] private Image front;
-    [SerializeReference] private GameObject corEye;
     [SerializeReference] private Image[] icons = new Image[5];
     [SerializeReference] private Image[] iconsBack = new Image[5];
 
-    public TextMeshProUGUI Name { get { return name;} }
-    public TextMeshProUGUI CorruptionPassDescription {
-        get { return corrPass; }
-        set { corrPass = value; }
-    }
-    public TextMeshProUGUI CorruptionFailDescription {
-        get { return corrFail; }
-        set { corrFail = value; }
-    }
-    public TextMeshProUGUI Description {
-        get { return description; }
-        set { description = value; }
-    }
-    public Image Front {
-        get { return front; }
-        set { front = value; }
-    }
+    [Header("Display Properties")]
+    [SerializeReference] private bool isCombatCard;
+    [SerializeReference] private bool isSelectionCard;
+
+    public bool Selected { get { return isSelected; } }
+
     //The public facing card of this class. This is where all the cards data (from _cardData) is returned
     public Card CardData {
         get{return cardData;}
@@ -64,6 +52,10 @@ public class CardDisplayController : MonoBehaviour, IPointerEnterHandler, IPoint
                     = Resources.Load<Sprite>("UserInterface/Card Fronts/Sword");
             else if (cardData.Affinity == Enums.Affinity.Fool) front.sprite
                     = Resources.Load<Sprite>("UserInterface/Card Fronts/Fool");
+            else if (cardData.Affinity == Enums.Affinity.Magician) front.sprite
+                    = Resources.Load<Sprite>("UserInterface/Card Fronts/Magician");
+            else if (cardData.Affinity == Enums.Affinity.Priestess) front.sprite
+                    = Resources.Load<Sprite>("UserInterface/Card Fronts/Priestess");
 
             for (int i = 0; i < 5; i++) {
                 if (cardData.Icons[i] != Enums.CardEffects.None) {
@@ -94,35 +86,61 @@ public class CardDisplayController : MonoBehaviour, IPointerEnterHandler, IPoint
         Destroy(gameObject);
     }
 
+    public void SelectCard() {
+        isSelected = !isSelected;
+        if (isSelected) {
+            front.sprite = Resources.Load<Sprite>("UserInterface/Card Fronts/Blank");
+            DeckBuilder.Instance.AddSelection(this);
+        } else {
+            if (cardData.Affinity == Enums.Affinity.Chalice) front.sprite
+                    = Resources.Load<Sprite>("UserInterface/Card Fronts/Chalice");
+            else if (cardData.Affinity == Enums.Affinity.Pentacle) front.sprite
+                    = Resources.Load<Sprite>("UserInterface/Card Fronts/Pentacle");
+            else if (cardData.Affinity == Enums.Affinity.Staff) front.sprite
+                    = Resources.Load<Sprite>("UserInterface/Card Fronts/Staff");
+            else if (cardData.Affinity == Enums.Affinity.Sword) front.sprite
+                    = Resources.Load<Sprite>("UserInterface/Card Fronts/Sword");
+            DeckBuilder.Instance.RemoveSelection(this);
+        }
+    }
+
     
     public void Start() {
-        GetComponent<Draggable>().zone = GameObject.FindGameObjectWithTag("HandDisplay").GetComponent<DropZone>();
-        GetComponent<Draggable>().returnDropZone = GetComponent<Draggable>().zone;
+        //If this card is being used for combat, then set up the draggable
+        if (isCombatCard) {
+            GetComponent<Draggable>().enabled = true;
+            GetComponent<Draggable>().zone = GameObject.FindGameObjectWithTag("HandDisplay").GetComponent<DropZone>();
+            GetComponent<Draggable>().returnDropZone = GetComponent<Draggable>().zone;
 
-        GetComponent<Draggable>().onDragStop += (drag, drop) => {
-            if (drop != null && drop.GetComponent<PartyCharacter>() != null){
-                if (cardData.Affinity == drop.GetComponent<PartyCharacter>().data.PrimaryAffinity ||
-                    cardData.Affinity == drop.GetComponent<PartyCharacter>().data.SecondaryAffinity)
-                    StartCoroutine(Play(drop.GetComponent<PartyCharacter>()));
-                else {
-                    StartCoroutine(CombatUIManager.Instance.DisplayMessage(drop.GetComponent<PartyCharacter>().data.Name
-                        + " cannot play " + cardData.Affinity + " cards", 3f));
-                    GetComponent<Draggable>().zone = GameObject.FindGameObjectWithTag("HandDisplay").GetComponent<DropZone>();
-                    GetComponent<Draggable>().returnDropZone = GetComponent<Draggable>().zone;
-                    transform.SetParent(GetComponent<Draggable>().zone.transform);
+            GetComponent<Draggable>().onDragStop += (drag, drop) => {
+                if (drop != null && drop.GetComponent<PartyCharacter>() != null) {
+                    if (cardData.Affinity == drop.GetComponent<PartyCharacter>().data.PrimaryAffinity ||
+                        cardData.Affinity == drop.GetComponent<PartyCharacter>().data.SecondaryAffinity)
+                        StartCoroutine(Play(drop.GetComponent<PartyCharacter>()));
+                    else {
+                        StartCoroutine(CombatUIManager.Instance.DisplayMessage(drop.GetComponent<PartyCharacter>().data.Name
+                            + " cannot play " + cardData.Affinity + " cards", 3f));
+                        GetComponent<Draggable>().zone = GameObject.FindGameObjectWithTag("HandDisplay").GetComponent<DropZone>();
+                        GetComponent<Draggable>().returnDropZone = GetComponent<Draggable>().zone;
+                        transform.SetParent(GetComponent<Draggable>().zone.transform);
+                    }
+                } else if (drop != null) {
+                    if (drop.gameObject.transform.tag.Equals("DiscardDrop")) {
+                        GameManager.Instance.Discard(CardData);
+                        CombatUIManager.Instance.Hand.DisplayedCards.Remove(this);
+                        Destroy(gameObject);
+                    } else {
+                        GetComponent<Draggable>().zone = GameObject.FindGameObjectWithTag("HandDisplay").GetComponent<DropZone>();
+                        GetComponent<Draggable>().returnDropZone = GetComponent<Draggable>().zone;
+                        transform.SetParent(GetComponent<Draggable>().zone.transform);
+                    }
                 }
-            } else if (drop != null) {
-                if (drop.gameObject.transform.tag.Equals("DiscardDrop")) {
-                    GameManager.Instance.Discard(CardData);
-                    CombatUIManager.Instance.Hand.DisplayedCards.Remove(this);
-                    Destroy(gameObject);
-                } else {
-                    GetComponent<Draggable>().zone = GameObject.FindGameObjectWithTag("HandDisplay").GetComponent<DropZone>();
-                    GetComponent<Draggable>().returnDropZone = GetComponent<Draggable>().zone;
-                    transform.SetParent(GetComponent<Draggable>().zone.transform);
-                }
-            }
-        };
+            };
+        }
+        //If this card is being used for card selection, then set up being able to select it
+        else if (isSelectionCard) {
+            GetComponent<Button>().onClick.AddListener(delegate { SelectCard(); });
+        }
         RectTransform rect = GetComponent<RectTransform>();
         rect.localScale = new Vector3(0.95f, 0.95f, 0.95f);
     }
@@ -130,7 +148,7 @@ public class CardDisplayController : MonoBehaviour, IPointerEnterHandler, IPoint
     // Delete cards once targets have been designated
     public IEnumerator ResolveTargets() {
         CombatUIManager.Instance.ToggleEndTurnButton(false);
-
+        CombatUIManager.Instance.EnableDrag = false;
         this.GetComponent<RectTransform>().position = new Vector3(175, 200, 0);
 
         Debug.Log($"<color=blue>{CardData.Name} </color>Designating target...");
@@ -139,6 +157,7 @@ public class CardDisplayController : MonoBehaviour, IPointerEnterHandler, IPoint
 
         //AudioManager.audioMgr.PlayUISFX("PlaceCard");
 
+        CombatUIManager.Instance.EnableDrag = true;
         CombatUIManager.Instance.ToggleEndTurnButton(true);
     }
 
@@ -146,7 +165,7 @@ public class CardDisplayController : MonoBehaviour, IPointerEnterHandler, IPoint
     public static CardDisplayController CreateCard(Card card){
 
         if (cardDisplayPrefab == null)
-            cardDisplayPrefab = Resources.Load<GameObject>("UserInterface/CardDisplay");
+            cardDisplayPrefab = Resources.Load<GameObject>("UserInterface/CardDisplayCombat");
         
         var cardGameObject = Instantiate<GameObject>(cardDisplayPrefab, Vector3.zero, Quaternion.identity);
 

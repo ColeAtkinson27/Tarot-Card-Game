@@ -13,26 +13,40 @@ MonoBehaviour:
   m_Name: Magician Dragons Breath
   m_EditorClassIdentifier: 
   cardName: Dragon's Breath
-  cardDescription: 
-  cardCorruptionPassDescription: 
-  cardCorruptionFailDescription: 
+  cardDescription: Burn (2/2) all targets.
+  cardCorruptionPassDescription: Heal 1-6 health to the target
+  cardCorruptionFailDescription: Stun the target
   cardFlavor: 
   cardAffinity: 6
-  cardAllyTargets: 0
+  cardAllyTargets: 4
   cardEnemyTargets: 0
   cardColor: {r: 0, g: 0, b: 0, a: 0}
   exiled: 0
-  bossCard: 0
-  cardIcons: 0000000000000000000000000000000000000000
-  cardBackIcons: 0000000000000000000000000000000000000000
+  bossCard: 1
+  cardIcons: 1100000022000000060000000000000000000000
+  cardBackIcons: 0300000002000000010000000000000000000000
   cardAnimation: 
   cardEffects:
   - value1: 2
-    value2: 3
+    value2: 2
+    value3: 0
+    stringValue: 
+    targetType: 4
+    caster: {fileID: 0}
+    effectType: 6
+  cardCorPass:
+  - value1: 1
+    value2: 6
     value3: 0
     stringValue: 
     targetType: 0
     caster: {fileID: 0}
-    effectType: 6
-  cardCorPass: []
-  cardCorFail: []
+    effectType: 17
+  cardCorFail:
+  - value1: 0
+    value2: 1
+    value3: 0
+    stringValue: 
+    targetType: 0
+    caster: {fileID: 0}
+    effectType: 34

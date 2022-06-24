@@ -69,9 +69,9 @@ public class SceneController : MonoBehaviour {
             for (int i = 0; i < levels.Count; i++)
                 if (levels[i].Scene.Equals(sceneName)) {
                     levels.RemoveAt(i);
-                    break;
+                    SceneManager.UnloadSceneAsync(sceneName);
+                    return;
                 }
-            SceneManager.UnloadSceneAsync(sceneName);
         } catch (Exception e) {
             Debug.Log("<color=red>Unload scene error:</color> " + e.ToString() + "\n" + e.StackTrace);
         }
@@ -85,6 +85,12 @@ public class SceneController : MonoBehaviour {
         switch(boss) {
             case Enums.Affinity.Fool:
                 currentBoss = "Fight Fool";
+                break;
+            case Enums.Affinity.Magician:
+                currentBoss = "Fight Magician";
+                break;
+            case Enums.Affinity.Priestess:
+                currentBoss = "Fight Priestess";
                 break;
             default:
                 Debug.Log("<color=red>Load boss error:</color> " + boss + " is not a valid boss.");

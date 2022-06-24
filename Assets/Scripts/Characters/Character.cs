@@ -262,13 +262,14 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
     }
 
     public void toggleHighlight() {
-        try {
-            if (highlight.active)
-                highlight.SetActive(false);
-            else //if (Defeated == false)
-              highlight.SetActive(true);
+        if (!Defeated) {
+            try {
+                if (highlight.active)
+                    highlight.SetActive(false);
+                else //if (Defeated == false)
+                    highlight.SetActive(true);
+            } catch { Debug.Log($"<color=red>Error: {this.name} does not contain a ParticleSystem highlight component. Cannot toggle (Character.cs)</color>"); }
         }
-        catch { Debug.Log($"<color=red>Error: {this.name} does not contain a ParticleSystem highlight component. Cannot toggle (Character.cs)</color>"); }
     }
 
     public void toggleHighlight(bool toggle) {

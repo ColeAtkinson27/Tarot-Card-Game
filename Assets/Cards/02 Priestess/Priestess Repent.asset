@@ -12,20 +12,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b95fb39de2dd39945840ebe471fa3f0a, type: 3}
   m_Name: Priestess Repent
   m_EditorClassIdentifier: 
-  cardName: 
-  cardDescription: 
-  cardCorruptionPassDescription: 
-  cardCorruptionFailDescription: 
+  cardName: Repent
+  cardDescription: Force all targets to repent.
+  cardCorruptionPassDescription: No effect
+  cardCorruptionFailDescription: Inflict Bleed (2/4) and remove 25 Soul Taint
   cardFlavor: 
   cardAffinity: 7
-  cardAllyTargets: 0
+  cardAllyTargets: 4
   cardEnemyTargets: 0
   cardColor: {r: 0, g: 0, b: 0, a: 0}
   exiled: 0
-  bossCard: 0
-  cardIcons: 0000000000000000000000000000000000000000
-  cardBackIcons: 0000000000000000000000000000000000000000
+  bossCard: 1
+  cardIcons: 0300000021000000000000000000000000000000
+  cardBackIcons: 0200000002000000000000000000000000000000
   cardAnimation: 
   cardEffects: []
   cardCorPass: []
-  cardCorFail: []
+  cardCorFail:
+  - value1: 2
+    value2: 4
+    value3: 0
+    stringValue: 
+    targetType: 0
+    caster: {fileID: 0}
+    effectType: 3
+  - value1: 0
+    value2: 0
+    value3: 25
+    stringValue: 
+    targetType: 0
+    caster: {fileID: 0}
+    effectType: 33

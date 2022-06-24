@@ -85,7 +85,9 @@ public class CardEffect {
             case Enums.CardEffects.Heal:
                 yield return CardEffectManager.Damage(caster, target, effectType, value1, value2, value3);
                 break;
-            case Enums.CardEffects.Insert: break;
+            case Enums.CardEffects.Insert:
+                throw new System.NotImplementedException();
+                break;
             case Enums.CardEffects.Lightning:
                 yield return CardEffectManager.Damage(caster, target, effectType, value1, value2, value3);
                 break;
@@ -131,7 +133,9 @@ public class CardEffect {
             case Enums.CardEffects.Stun:
                 yield return CardEffectManager.Afflict(target, effectType, value2);
                 break;
-            case Enums.CardEffects.Summon: break;
+            case Enums.CardEffects.Summon:
+                throw new System.NotImplementedException();
+                break;
             case Enums.CardEffects.Taunt:
                 yield return CardEffectManager.Afflict(target, effectType, value2);
                 break;

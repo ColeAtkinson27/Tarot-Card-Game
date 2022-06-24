@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc26bdae232ef8140b43e7fb90700e11, type: 3}
+  m_Name: Tier 1
+  m_EditorClassIdentifier: 
+  cardList:
+  - {fileID: 11400000, guid: 31bccf85990cdb14295de5bfccd91c9b, type: 2}
+  - {fileID: 11400000, guid: cb4667b5ef4677f47a0ac874314dbad5, type: 2}
+  - {fileID: 11400000, guid: 2684a226d7d6180499391d0d25af46b0, type: 2}
+  - {fileID: 11400000, guid: ec6a59c478439c1469e42ef76d2457df, type: 2}
+  - {fileID: 11400000, guid: 41c3cb08f3453614f9a7576b0bce8383, type: 2}
+  - {fileID: 11400000, guid: b3460688e4268e649bbf529e0d541074, type: 2}
+  - {fileID: 11400000, guid: d10f85c5173401145980d05bd2ce1f60, type: 2}
+  - {fileID: 11400000, guid: 73f9eea4e524728459ed18a3c5276e0c, type: 2}
+  cardsToChoose: 4

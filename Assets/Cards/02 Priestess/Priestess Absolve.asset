@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b95fb39de2dd39945840ebe471fa3f0a, type: 3}
   m_Name: Priestess Absolve
   m_EditorClassIdentifier: 
-  cardName: 
-  cardDescription: 
+  cardName: Absolve
+  cardDescription: Deal 3-18 Physical damage and Rejuvenate (5/5) the caster.
   cardCorruptionPassDescription: 
   cardCorruptionFailDescription: 
   cardFlavor: 
@@ -22,10 +22,24 @@ MonoBehaviour:
   cardEnemyTargets: 0
   cardColor: {r: 0, g: 0, b: 0, a: 0}
   exiled: 0
-  bossCard: 0
-  cardIcons: 0000000000000000000000000000000000000000
-  cardBackIcons: 0000000000000000000000000000000000000000
+  bossCard: 1
+  cardIcons: 170000001a000000000000000000000000000000
+  cardBackIcons: 0100000001000000000000000000000000000000
   cardAnimation: 
-  cardEffects: []
+  cardEffects:
+  - value1: 3
+    value2: 6
+    value3: 0
+    stringValue: 
+    targetType: 1
+    caster: {fileID: 0}
+    effectType: 23
+  - value1: 5
+    value2: 5
+    value3: 0
+    stringValue: 
+    targetType: 1
+    caster: {fileID: 0}
+    effectType: 26
   cardCorPass: []
   cardCorFail: []

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657892, g: 0.4964127, b: 0.57481503, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311912, g: 0.3807398, b: 0.3587271, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2575,7 +2575,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &1633993570
 Light:
   m_ObjectHideFlags: 0
@@ -2772,6 +2772,7 @@ Transform:
   - {fileID: 1111221820}
   - {fileID: 1406536802}
   - {fileID: 892176683}
+  - {fileID: 6843066568885556009}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3012,6 +3013,84 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6363538499020214649, guid: d672f788c158596448a30886e4520c96, type: 3}
   m_PrefabInstance: {fileID: 6114727961467981755}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6843066568885556008
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1999857699}
+    m_Modifications:
+    - target: {fileID: 181486447304657334, guid: efb2b4cb7548a04488493ee313571fbe, type: 3}
+      propertyPath: m_RootOrder
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 181486447304657334, guid: efb2b4cb7548a04488493ee313571fbe, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 181486447304657334, guid: efb2b4cb7548a04488493ee313571fbe, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 181486447304657334, guid: efb2b4cb7548a04488493ee313571fbe, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -106
+      objectReference: {fileID: 0}
+    - target: {fileID: 181486447304657334, guid: efb2b4cb7548a04488493ee313571fbe, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -26
+      objectReference: {fileID: 0}
+    - target: {fileID: 181486447304657334, guid: efb2b4cb7548a04488493ee313571fbe, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -77.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 181486447304657334, guid: efb2b4cb7548a04488493ee313571fbe, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 181486447304657334, guid: efb2b4cb7548a04488493ee313571fbe, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 181486447304657334, guid: efb2b4cb7548a04488493ee313571fbe, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 181486447304657334, guid: efb2b4cb7548a04488493ee313571fbe, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 181486447304657334, guid: efb2b4cb7548a04488493ee313571fbe, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 181486447304657334, guid: efb2b4cb7548a04488493ee313571fbe, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 181486447304657334, guid: efb2b4cb7548a04488493ee313571fbe, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5251017046277827945, guid: efb2b4cb7548a04488493ee313571fbe, type: 3}
+      propertyPath: m_Name
+      value: LevelLoader
+      objectReference: {fileID: 0}
+    - target: {fileID: 8678640652788921026, guid: efb2b4cb7548a04488493ee313571fbe, type: 3}
+      propertyPath: unloadLevels.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8678640652788921026, guid: efb2b4cb7548a04488493ee313571fbe, type: 3}
+      propertyPath: unloadLevels.Array.data[0]
+      value: Clearspring
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: efb2b4cb7548a04488493ee313571fbe, type: 3}
+--- !u!4 &6843066568885556009 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 181486447304657334, guid: efb2b4cb7548a04488493ee313571fbe, type: 3}
+  m_PrefabInstance: {fileID: 6843066568885556008}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6869710712512077543
 PrefabInstance:

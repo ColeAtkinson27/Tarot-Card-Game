@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b95fb39de2dd39945840ebe471fa3f0a, type: 3}
   m_Name: Magician Prismatic Barrier
   m_EditorClassIdentifier: 
-  cardName: 
-  cardDescription: 
+  cardName: Prismatic Barrier
+  cardDescription: Gain 3 Armor.
   cardCorruptionPassDescription: 
   cardCorruptionFailDescription: 
   cardFlavor: 
@@ -22,10 +22,17 @@ MonoBehaviour:
   cardEnemyTargets: 0
   cardColor: {r: 0, g: 0, b: 0, a: 0}
   exiled: 0
-  bossCard: 0
-  cardIcons: 0000000000000000000000000000000000000000
-  cardBackIcons: 0000000000000000000000000000000000000000
+  bossCard: 1
+  cardIcons: 0200000000000000000000000000000000000000
+  cardBackIcons: 0100000000000000000000000000000000000000
   cardAnimation: 
-  cardEffects: []
+  cardEffects:
+  - value1: 3
+    value2: 0
+    value3: 0
+    stringValue: 
+    targetType: 1
+    caster: {fileID: 0}
+    effectType: 2
   cardCorPass: []
   cardCorFail: []

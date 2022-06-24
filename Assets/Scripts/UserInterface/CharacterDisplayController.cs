@@ -53,7 +53,7 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
         }
     }
     public void ChangeHealth(int currentHealth) {
-        if (Character.Defeated == true || Character.Health == 0) deathMark.enabled = true;
+        if (Character.Defeated == true) deathMark.enabled = true;
         else deathMark.enabled = false;
         healthLabel.text = currentHealth + "/" + Character.data.MaxHP;
     }
@@ -92,6 +92,9 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
             case Enums.Action.Stunned:
                 actionButton.gameObject.SetActive(false);
                 break;
+            case Enums.Action.Silenced:
+                actionButton.gameObject.SetActive(false);
+                break;
             case Enums.Action.Draw:
                 break;
         }
@@ -123,7 +126,7 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
 
     //Reset the character back to attacking if their display is right clicked
     public void OnPointerClick(PointerEventData d){
-        if (GameManager.Instance.ActionsEnabled)
+        if (GameManager.Instance.Phase == Enums.GameplayPhase.Planning && GameManager.Instance.ActionsEnabled)
             if(d.button == PointerEventData.InputButton.Right && Character.CardToPlay != null){
                 GameManager.Instance.PlaceCardInHand(Character.CardToPlay);
                 Character.CardToPlay = null;
@@ -132,7 +135,7 @@ public class CharacterDisplayController : MonoBehaviour, IPointerClickHandler {
 
     //Reset the character back to attacking if their action button is clicked
     public void CheckAction() {
-        if (GameManager.Instance.ActionsEnabled)
+        if (GameManager.Instance.Phase == Enums.GameplayPhase.Planning && GameManager.Instance.ActionsEnabled)
             if (Character.CardToPlay != null && returnCard == true) {
                 GameManager.Instance.PlaceCardInHand(Character.CardToPlay);
                 Character.CardToPlay = null;

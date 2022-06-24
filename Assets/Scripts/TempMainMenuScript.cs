@@ -16,6 +16,11 @@ public class TempMainMenuScript : MonoBehaviour {
         SceneManager.LoadScene("Base Scene"); 
     }
 
+    public void BossRush() {
+        PlayerData.location = "BossRushArena";
+        SceneManager.LoadScene("BossRush");
+    }
+
     public void Exit() { Application.Quit(); }
     public void Help(bool toggle) {
         HelpMenu.SetActive(toggle);

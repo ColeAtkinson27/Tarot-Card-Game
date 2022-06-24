@@ -12,20 +12,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b95fb39de2dd39945840ebe471fa3f0a, type: 3}
   m_Name: Priestess Confess
   m_EditorClassIdentifier: 
-  cardName: 
-  cardDescription: 
-  cardCorruptionPassDescription: 
-  cardCorruptionFailDescription: 
+  cardName: Confess
+  cardDescription: Deal 2-12 Physical damage to two targets.
+  cardCorruptionPassDescription: Inflict 15 Soul Taint
+  cardCorruptionFailDescription: Silence the target.
   cardFlavor: 
   cardAffinity: 7
-  cardAllyTargets: 0
+  cardAllyTargets: 2
   cardEnemyTargets: 0
   cardColor: {r: 0, g: 0, b: 0, a: 0}
   exiled: 0
-  bossCard: 0
-  cardIcons: 0000000000000000000000000000000000000000
-  cardBackIcons: 0000000000000000000000000000000000000000
+  bossCard: 1
+  cardIcons: 090000001e000000170000000000000000000000
+  cardBackIcons: 0300000002000000010000000000000000000000
   cardAnimation: 
-  cardEffects: []
-  cardCorPass: []
-  cardCorFail: []
+  cardEffects:
+  - value1: 2
+    value2: 6
+    value3: 0
+    stringValue: 
+    targetType: 2
+    caster: {fileID: 0}
+    effectType: 23
+  cardCorPass:
+  - value1: 0
+    value2: 0
+    value3: 15
+    stringValue: 
+    targetType: 0
+    caster: {fileID: 0}
+    effectType: 9
+  cardCorFail:
+  - value1: 0
+    value2: 1
+    value3: 0
+    stringValue: 
+    targetType: 0
+    caster: {fileID: 0}
+    effectType: 30

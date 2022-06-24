@@ -9,21 +9,40 @@ public static class CardEffectManager {
             case Enums.CardEffects.Armored:
                 target.Status.Armored += value;
                 break;
-            case Enums.CardEffects.Protect: break;
-            case Enums.CardEffects.Taunt: break;
-            case Enums.CardEffects.Haste: break;
+            case Enums.CardEffects.Protect:
+                throw new System.NotImplementedException();
+                break;
+            case Enums.CardEffects.Taunt:
+                target.Status.Taunting += value;
+                break;
+            case Enums.CardEffects.Haste:
+                target.Status.Hasted += value;
+                break;
             case Enums.CardEffects.Shroud:
                 target.Status.Shrouded += value;
                 break;
 
             //Negative Effects
-            case Enums.CardEffects.Blind: break;
-            case Enums.CardEffects.Curse: break;
-            case Enums.CardEffects.Mark: break;
-            case Enums.CardEffects.Silence: break;
-            case Enums.CardEffects.Sleep: break;
+            case Enums.CardEffects.Blind:
+                target.Status.Blinded += value;
+                break;
+            case Enums.CardEffects.Curse:
+                target.Status.Cursed += value;
+                break;
+            case Enums.CardEffects.Mark:
+                target.Status.Marked += value;
+                break;
+            case Enums.CardEffects.Silence:
+                target.Status.Silenced += value;
+                target.Action = Enums.Action.Silenced;
+                break;
+            case Enums.CardEffects.Sleep:
+                target.Status.Sleeping += value;
+                target.Action = Enums.Action.Stunned;
+                break;
             case Enums.CardEffects.Stun:
                 if (target.GetComponent<EnemyCharacter>() != null) {
+                    Debug.Log("Trying to stun a boss");
                     int chance = Random.Range(0, 100);
                     if (chance > 50) {
                         target.Status.Stunned += value;
@@ -58,7 +77,28 @@ public static class CardEffectManager {
     }
 
     public static IEnumerator Cleanse(Character target, bool cleanseHarmful) {
-        throw new System.NotImplementedException();
+        if (cleanseHarmful) {
+            target.Status.Bleeds.Clear();
+            target.Status.Burns.Clear();
+            target.Status.Poisons.Clear();
+            target.Status.Blinded = 0;
+            target.Status.Cursed = 0;
+            target.Status.Marked = 0;
+            target.Status.Silenced = 0;
+            target.Status.Sleeping = 0;
+            target.Status.Stunned = 0;
+            if (target.Status.ATKBonus < 0) target.Status.ATKBonus = 0;
+            if (target.Status.DEFBonus < 0) target.Status.DEFBonus = 0;
+        } else {
+            target.Status.Rejuvenations.Clear();
+            target.Status.Armored = 0;
+            target.Status.Hasted = 0;
+            target.Status.Shrouded = 0;
+            target.Status.Taunting = 0;
+            if (target.Status.ATKBonus > 0) target.Status.ATKBonus = 0;
+            if (target.Status.DEFBonus > 0) target.Status.DEFBonus = 0;
+        }
+        yield return null;
     }
 
     public static IEnumerator Corrupt(Character target, bool corrupt, int value) {

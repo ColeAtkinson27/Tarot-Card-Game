@@ -34,7 +34,7 @@ public class CombatUIManager : MonoBehaviour {
     public static CombatUIManager Instance { get { return instance; } }
     public List<CharacterDisplayController> PlayerInfo { get { return playerInfo; } }
     public HandDisplayController Hand { get { return hand; } }
-    public bool EnableDrag { get { return enableDrag; } }
+    public bool EnableDrag { get { return enableDrag; } set { enableDrag = value; } }
 
     void Awake () {
         if (instance == null)
@@ -232,5 +232,10 @@ public class CombatUIManager : MonoBehaviour {
         if (helpIndex == 0) return;
         helpIndex--;
         SetHelpPage();
+    }
+
+    public void EndBoss() {
+        foreach (EnemyCharacter e in GameManager.Instance.Foes())
+            e.Health = 0;
     }
 }
