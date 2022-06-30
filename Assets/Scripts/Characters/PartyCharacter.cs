@@ -92,7 +92,7 @@ public class PartyCharacter : Character
         } else if(Action == Enums.Action.Attack || Action == Enums.Action.Silenced) {
             yield return BasicAttack();
         }
-        ResolveEffects();
+        yield return ResolveEffects();
         InvokeTurnEndHandler();
         yield return new WaitForSeconds(1f);
     }

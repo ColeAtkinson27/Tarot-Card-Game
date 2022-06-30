@@ -27,6 +27,6 @@ public class MagicianCharacter : EnemyCharacter {
             deck.CardList.Remove(CardToPlay);
             deck.DiscardList.Add(CardToPlay);
         }
-        ResolveEffects();
+        yield return ResolveEffects();
     }
 }

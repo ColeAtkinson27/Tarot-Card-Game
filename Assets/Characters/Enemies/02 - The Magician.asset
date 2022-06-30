@@ -15,7 +15,7 @@ MonoBehaviour:
   primaryAffinity: 6
   secondaryAffinity: 0
   name: The Alchemist
-  maxHealth: 80
+  maxHealth: 70
   avatar: {fileID: 0}
   BossDeck:
   - {fileID: 11400000, guid: 01433c77c050d8e4f9a900b8012afc62, type: 2}

@@ -14,12 +14,11 @@ public class DeckBuilder : MonoBehaviour {
     private List<CardDisplayController> selectedCards = new List<CardDisplayController>();
 
     private List<GameObject> draftCards = new List<GameObject>();
-    private List<GameObject> currentCards = new List<GameObject>();
 
-    [SerializeField] private RectTransform currentCardsDisplay;
     [SerializeField] private RectTransform draftCardsDisplay;
     [SerializeField] private Button confirmButton;
     [SerializeField] private TextMeshProUGUI cardsLeftText;
+    [SerializeField] private CardMenusDisplay cardDisplay;
 
     public void Awake(){
         if (instance == null) {
@@ -39,7 +38,7 @@ public class DeckBuilder : MonoBehaviour {
             draftCards.Add(display);
             display.transform.SetParent(draftCardsDisplay);
         }
-        SortCurrentCards(0);
+        cardDisplay.SortCards(0);
     }
 
     public void AddSelection(CardDisplayController card) {
@@ -62,21 +61,38 @@ public class DeckBuilder : MonoBehaviour {
             selectedCards[0].SelectCard();
     }
     public void ConfirmSelection() {
+        int equippedCards = PlayerData.EquippedCards;
         foreach (CardDisplayController card in selectedCards) {
             Debug.Log("<color=purple>Card added to deck</color>: " + card.CardData.Name 
                 + " added to " + card.CardData.Affinity + " deck");
             switch(card.CardData.Affinity) {
                 case Enums.Affinity.Chalice:
-                    PlayerData.ChaliceCards.Add(card.CardData);
+                    PlayerData.ChaliceCardsOwned.Add(card.CardData);
+                    if (equippedCards < GlobalNumbers.MAX_DECK_SIZE) {
+                        PlayerData.ChaliceCards.Add(card.CardData);
+                        equippedCards++;
+                    }
                     break;
                 case Enums.Affinity.Pentacle:
-                    PlayerData.PentacleCards.Add(card.CardData);
+                    PlayerData.PentacleCardsOwned.Add(card.CardData);
+                    if (equippedCards < GlobalNumbers.MAX_DECK_SIZE) {
+                        PlayerData.PentacleCards.Add(card.CardData);
+                        equippedCards++;
+                    }
                     break;
                 case Enums.Affinity.Staff:
-                    PlayerData.StaffCards.Add(card.CardData);
+                    PlayerData.StaffCardsOwned.Add(card.CardData);
+                    if (equippedCards < GlobalNumbers.MAX_DECK_SIZE) {
+                        PlayerData.StaffCards.Add(card.CardData);
+                        equippedCards++;
+                    }
                     break;
                 case Enums.Affinity.Sword:
-                    PlayerData.SwordCards.Add(card.CardData);
+                    PlayerData.SwordCardsOwned.Add(card.CardData);
+                    if (equippedCards < GlobalNumbers.MAX_DECK_SIZE) {
+                        PlayerData.SwordCards.Add(card.CardData);
+                        equippedCards++;
+                    }
                     break;
             }
         }
@@ -87,63 +103,7 @@ public class DeckBuilder : MonoBehaviour {
             draftCards.RemoveAt(0);
             Destroy(cardDisplay.gameObject);
         }
-        while (currentCards.Count > 0) {
-            cardDisplay = currentCards[0];
-            currentCards.RemoveAt(0);
-            Destroy(cardDisplay.gameObject);
-        }
         confirmButton.interactable = false;
         UIManager.Instance.EndDraft();
-    }
-
-    public void SortCurrentCards (int sortBy) {
-        //Remove the current display of cards
-        GameObject cardDisplay;
-        while (currentCards.Count > 0) {
-            cardDisplay = currentCards[0];
-            currentCards.RemoveAt(0);
-            Destroy(cardDisplay.gameObject);
-        }
-
-        //Grab card selection
-        List<Card> cards = new List<Card>();
-        switch ((Enums.Affinity) sortBy) {
-            case Enums.Affinity.Chalice:
-                cards.AddRange(PlayerData.ChaliceCards);
-                break;
-            case Enums.Affinity.Pentacle:
-                cards.AddRange(PlayerData.PentacleCards);
-                break;
-            case Enums.Affinity.Staff:
-                cards.AddRange(PlayerData.StaffCards);
-                break;
-            case Enums.Affinity.Sword:
-                cards.AddRange(PlayerData.SwordCards);
-                break;
-            default:
-                cards.AddRange(PlayerData.ChaliceCards);
-                cards.AddRange(PlayerData.PentacleCards);
-                cards.AddRange(PlayerData.StaffCards);
-                cards.AddRange(PlayerData.SwordCards);
-                break;
-        }
-
-        //Sort cards by name
-        Card[] cardSort = cards.ToArray();
-        cards.Sort(delegate (Card x, Card y) {
-            if (string.IsNullOrEmpty(x.Name) && string.IsNullOrEmpty(y.Name)) return 0;
-            else if (string.IsNullOrEmpty(x.Name)) return -1;
-            else if (string.IsNullOrEmpty(y.Name)) return 1;
-            else return x.Name.CompareTo(y.Name);
-        });
-
-        //Display cards
-        GameObject display;
-        foreach (Card c in cards) {
-            display = Instantiate(Resources.Load<GameObject>("UserInterface/CardDisplay"));
-            display.GetComponent<CardDisplayController>().CardData = c;
-            currentCards.Add(display);
-            display.transform.SetParent(currentCardsDisplay);
-        }
     }
 }

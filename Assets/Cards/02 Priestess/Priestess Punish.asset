@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Priestess Punish
   m_EditorClassIdentifier: 
   cardName: Punish
-  cardDescription: Deal 1-6 Physical damage to the target. Inflict Bleed (2/2) and
-    15 Soul Taint.
+  cardDescription: Deal 1-6 Physical damage to 2 targets. Inflict Bleed (2/2) and
+    25 Soul Taint.
   cardCorruptionPassDescription: 
   cardCorruptionFailDescription: 
   cardFlavor: 
   cardAffinity: 7
-  cardAllyTargets: 1
+  cardAllyTargets: 2
   cardEnemyTargets: 0
   cardColor: {r: 0, g: 0, b: 0, a: 0}
   exiled: 0
@@ -44,7 +44,7 @@ MonoBehaviour:
     effectType: 3
   - value1: 0
     value2: 0
-    value3: 15
+    value3: 25
     stringValue: 
     targetType: 2
     caster: {fileID: 0}

@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/River Canyon.unity
     guid: 981dde262e7bf6542b53037d3084555a
+  - enabled: 1
+    path: Assets/Scenes/Levels/Clearbrook.unity
+    guid: a587a5b750b7ffa49827571e13795fd6
   m_configObjects: {}

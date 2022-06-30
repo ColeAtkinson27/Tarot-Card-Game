@@ -31,7 +31,7 @@ MonoBehaviour:
     value2: 0
     value3: 0
     stringValue: 
-    targetType: 2
+    targetType: 1
     caster: {fileID: 0}
     effectType: 2
   cardCorPass: []

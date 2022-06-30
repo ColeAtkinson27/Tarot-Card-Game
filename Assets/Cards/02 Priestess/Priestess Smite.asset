@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Smite
   cardDescription: Deal 2-12 Physical damage to two targets, and gain 2 Armor.
-  cardCorruptionPassDescription: Inflict 10 Soul Taint
+  cardCorruptionPassDescription: Inflict 20 Soul Taint
   cardCorruptionFailDescription: Stun the target
   cardFlavor: 
   cardAffinity: 7
@@ -44,7 +44,7 @@ MonoBehaviour:
   cardCorPass:
   - value1: 0
     value2: 0
-    value3: 10
+    value3: 20
     stringValue: 
     targetType: 0
     caster: {fileID: 0}

@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour { 
     private static GameManager instance;
@@ -54,6 +53,7 @@ public class GameManager : MonoBehaviour {
         instance = this;
     }
     void Start() {
+        StartCoroutine(UIManager.Instance.OpenCurtains());
         InitializeCharacters();
         InitializeDecks();
         battleEnumerator = ExecuteBattle();
@@ -215,6 +215,7 @@ public class GameManager : MonoBehaviour {
 
     public IEnumerator GameWinScreen(){
         yield return CombatUIManager.Instance.DisplayMessage("Congratulations", 6f);
+        yield return UIManager.Instance.CloseCurtains();
         UIManager.Instance.StartDraft(Reward);
         SceneController.Instance.ExitCombatScene();
     }
@@ -222,7 +223,7 @@ public class GameManager : MonoBehaviour {
     public IEnumerator GameOverScreen(){
         yield return CombatUIManager.Instance.DisplayMessage("Everyone has fallen...", 2f);
         yield return CombatUIManager.Instance.DisplayMessage("Your soul was claimed by the denizen", 4f);
-        SceneManager.LoadScene(0);
+        yield return SceneController.Instance.ReturnToMainMenu();
     }
 
     //UI function, is called when the player presses the end planning button
@@ -278,10 +279,6 @@ public class GameManager : MonoBehaviour {
     //Initialize each character in party list established. 
     public void InitializeCharacters() {
         Debug.Log("Creating player characters");
-        PlayerData.party[0] = 3;
-        PlayerData.party[1] = 4;
-        PlayerData.party[2] = 2;
-        PlayerData.party[3] = 5;
         PartyCharacter newchar;
         for (int i = 0; i < 4; i++) {
             switch (PlayerData.party[i]) {

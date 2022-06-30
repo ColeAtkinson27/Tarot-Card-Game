@@ -9,6 +9,7 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
 
     [SerializeField] protected int health;
     [SerializeField] protected int corruption;
+    [SerializeField] protected GameObject particlePoint;
     [SerializeField] protected Card _cardToPlay = null;
 
     private bool _defeated = false;
@@ -29,7 +30,8 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
 
                 //AudioManager.audioMgr.PlayGivenSFX(GameManager.Instance.getChildGameObject(SFX, "Death").GetComponent<AudioSource>().clip);
 
-                Debug.Log("Defeated. Played death sound.");
+                Debug.Log(data.Name + " defeated.");
+                status.Dead();
 
                 Defeated = true;
 
@@ -152,6 +154,8 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
 
     protected CharacterStatus status;
     public CharacterStatus Status { get { return status; } }
+
+    public Transform ParticlePoint { get { return particlePoint.transform; } }
 
     //Character Events
     public delegate void StatChangeHandler(string statName, ref int oldValue, ref int newValue); 
@@ -289,7 +293,7 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
     public abstract IEnumerator GetTurn();
 
     //Called at the end of a character's turn
-    protected void ResolveEffects() {
-        status.ResolveEffects();
+    protected IEnumerator ResolveEffects() {
+        yield return status.ResolveEffects();
     }
 }

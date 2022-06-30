@@ -4,16 +4,23 @@ using UnityEngine;
 
 public class CombatStart : MonoBehaviour {
 
+    static CombatStart currentFight = null;
     [SerializeField] private Enums.Affinity encounter;
 
     void OnTriggerEnter(Collider collider) {
         Debug.Log("<color=green>Fight Collision Detected</color>");
         if (collider.gameObject.tag == "Player")
-            StartCombat();
+            StartCoroutine(StartCombat());
     }
 
-    private void StartCombat() {
-        SceneController.Instance.EnterCombatScene(encounter);
-        Destroy(gameObject);
+    private IEnumerator StartCombat() {
+        GetComponent<Collider>().enabled = false;
+        currentFight = this;
+        yield return SceneController.Instance.EnterCombatScene(encounter);
+    }
+
+    public static void EndCombat() {
+        if (currentFight)
+            Destroy(currentFight.gameObject);
     }
 }

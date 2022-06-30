@@ -21,4 +21,9 @@ public static class GlobalNumbers {
     public static readonly float SHIMMY_INTERACTION_RATE = 1f;
     /** <summary>The rate it takes for the player to swing across a large gap.</summary> */
     public static readonly float SWING_INTERACTION_RATE = 6f;
+
+    /** <summary>The rate it takes for the UI curtains to open and close.</summary> */
+    public static readonly float CURTAIN_MOVE_RATE = 3f;
+    /** <summary>The maximum number of cards a player can have equipped.</summary> */
+    public static readonly int MAX_DECK_SIZE = 32;
 }

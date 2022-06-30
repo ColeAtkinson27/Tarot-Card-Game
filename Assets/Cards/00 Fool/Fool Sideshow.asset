@@ -43,7 +43,7 @@ MonoBehaviour:
     caster: {fileID: 0}
     effectType: 9
   - value1: 0
-    value2: 1
+    value2: 2
     value3: 0
     stringValue: 
     targetType: 2

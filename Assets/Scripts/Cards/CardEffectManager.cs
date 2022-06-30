@@ -4,6 +4,7 @@ using UnityEngine;
 
 public static class CardEffectManager {
     public static IEnumerator Afflict(Character target, Enums.CardEffects effectType, int value) {
+        yield return DataManager.Instance.PlayParticle(target, effectType);
         switch (effectType) {
             //Positive Effects
             case Enums.CardEffects.Armored:
@@ -72,6 +73,7 @@ public static class CardEffectManager {
     }
 
     public static IEnumerator DoT(Character target, Enums.CardEffects effectType, int value, int turns) {
+        yield return DataManager.Instance.PlayParticle(target, effectType);
         target.Status.AddDot(effectType, value, turns);
         yield return null;
     }

@@ -18,7 +18,7 @@ MonoBehaviour:
   cardCorruptionFailDescription: 
   cardFlavor: 
   cardAffinity: 5
-  cardAllyTargets: 0
+  cardAllyTargets: 4
   cardEnemyTargets: 0
   cardColor: {r: 0, g: 0, b: 0, a: 0}
   exiled: 0

@@ -13,12 +13,12 @@ public class TempMainMenuScript : MonoBehaviour {
 
     public void NewGame() {
         PlayerData.location = "Jester's Playground";
-        SceneManager.LoadScene("Base Scene"); 
+        StartCoroutine(SceneController.Instance.OpenGame("Base Scene")); 
     }
 
     public void BossRush() {
         PlayerData.location = "BossRushArena";
-        SceneManager.LoadScene("BossRush");
+        StartCoroutine(SceneController.Instance.OpenGame("BossRush"));
     }
 
     public void Exit() { Application.Quit(); }

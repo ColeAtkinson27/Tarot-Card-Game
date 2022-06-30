@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PriestessCharacter : EnemyCharacter {
     [SerializeField] private Card repentCard;
-    private int playRepent = 3;
+    [SerializeField] private int playRepent = 3;
 
     private void Awake() {
         health = data.MaxHP;
@@ -34,7 +34,7 @@ public class PriestessCharacter : EnemyCharacter {
             deck.CardList.Remove(CardToPlay);
             deck.DiscardList.Add(CardToPlay);
         }
-        ResolveEffects();
+        yield return ResolveEffects();
         playRepent++;
     }
 }

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Dominate
   cardDescription: Deal 1-6 Physical damage to two targets, and Bolster the caster.
-  cardCorruptionPassDescription: 
+  cardCorruptionPassDescription: Inflict 15 Soul Taint
   cardCorruptionFailDescription: Weaken and Cripple the target
   cardFlavor: 
   cardAffinity: 7
@@ -23,8 +23,8 @@ MonoBehaviour:
   cardColor: {r: 0, g: 0, b: 0, a: 0}
   exiled: 0
   bossCard: 1
-  cardIcons: 250000000a000000170000000500000000000000
-  cardBackIcons: 0200000002000000010000000100000000000000
+  cardIcons: 09000000250000000a0000001700000005000000
+  cardBackIcons: 0300000002000000020000000100000001000000
   cardAnimation: 
   cardEffects:
   - value1: 1
@@ -41,7 +41,14 @@ MonoBehaviour:
     targetType: 1
     caster: {fileID: 0}
     effectType: 5
-  cardCorPass: []
+  cardCorPass:
+  - value1: 0
+    value2: 0
+    value3: 15
+    stringValue: 
+    targetType: 0
+    caster: {fileID: 0}
+    effectType: 9
   cardCorFail:
   - value1: 1
     value2: 0

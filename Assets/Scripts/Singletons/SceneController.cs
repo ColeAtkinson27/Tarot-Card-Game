@@ -32,8 +32,13 @@ public class SceneController : MonoBehaviour {
         Settings.LoadSettings();
     }
 
-    private void Start() {
+    public IEnumerator OpenGame(string baseLevel) {
+        SceneManager.LoadScene(baseLevel);
+        while(!SceneManager.GetSceneByName(baseLevel).IsValid()) yield return null;
         LoadScene(PlayerData.location);
+        //while (!UIManager.Instance) { Debug.Log("UI: " + UIManager.Instance); yield return new WaitForSeconds(1f); }
+        //Debug.Log("Opening curtains");
+        //yield return UIManager.Instance.OpenCurtains();
     }
 
     public void LoadScene(string sceneName) {
@@ -81,7 +86,8 @@ public class SceneController : MonoBehaviour {
      * <summary>Opens a combat scene and sets up the encounter.</summary>
      * <param name="encounterNo">The encounter number listed in the Encounter Collection.</param>
      */
-    public void EnterCombatScene (Enums.Affinity boss) {
+    public IEnumerator EnterCombatScene (Enums.Affinity boss) {
+        yield return UIManager.Instance.CloseCurtains();
         switch(boss) {
             case Enums.Affinity.Fool:
                 currentBoss = "Fight Fool";
@@ -94,7 +100,7 @@ public class SceneController : MonoBehaviour {
                 break;
             default:
                 Debug.Log("<color=red>Load boss error:</color> " + boss + " is not a valid boss.");
-                return;
+                yield break;
         }
         Player.gameObject.SetActive(false);
         Camera.gameObject.SetActive(false);
@@ -121,7 +127,13 @@ public class SceneController : MonoBehaviour {
     }
 
 
-    public void ReturnToMainMenu () {
+    public IEnumerator ReturnToMainMenu () {
+        yield return UIManager.Instance.CloseCurtains();
+        MainMenu();
+    }
+
+    public void MainMenu() {
+        levels.Clear();
         SceneManager.LoadScene(0);
     }
 

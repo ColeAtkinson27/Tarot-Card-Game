@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Magician Flame Strike
   m_EditorClassIdentifier: 
   cardName: Flame Strike
-  cardDescription: Deal 2-12 Fire damage to two targets.
+  cardDescription: Deal 2-8 Fire damage to two targets.
   cardCorruptionPassDescription: Inflict 15 Soul Taint
   cardCorruptionFailDescription: Cripple the target
   cardFlavor: 
@@ -28,7 +28,7 @@ MonoBehaviour:
   cardAnimation: 
   cardEffects:
   - value1: 2
-    value2: 6
+    value2: 4
     value3: 0
     stringValue: 
     targetType: 2

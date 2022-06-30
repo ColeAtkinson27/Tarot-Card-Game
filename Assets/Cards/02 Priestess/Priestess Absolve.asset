@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Priestess Absolve
   m_EditorClassIdentifier: 
   cardName: Absolve
-  cardDescription: Deal 3-18 Physical damage and Rejuvenate (5/5) the caster.
+  cardDescription: Deal 3-12 Physical damage and Rejuvenate (5/5) the caster.
   cardCorruptionPassDescription: 
   cardCorruptionFailDescription: 
   cardFlavor: 
@@ -28,7 +28,7 @@ MonoBehaviour:
   cardAnimation: 
   cardEffects:
   - value1: 3
-    value2: 6
+    value2: 4
     value3: 0
     stringValue: 
     targetType: 1

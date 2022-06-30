@@ -14,20 +14,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Repent
   cardDescription: Force all targets to repent.
-  cardCorruptionPassDescription: No effect
-  cardCorruptionFailDescription: Inflict Bleed (2/4) and remove 25 Soul Taint
+  cardCorruptionPassDescription: Inflict 10 Soul Taint
+  cardCorruptionFailDescription: Inflict Bleed (2/4) and remove 15 Soul Taint
   cardFlavor: 
   cardAffinity: 7
   cardAllyTargets: 4
   cardEnemyTargets: 0
   cardColor: {r: 0, g: 0, b: 0, a: 0}
-  exiled: 0
+  exiled: 1
   bossCard: 1
-  cardIcons: 0300000021000000000000000000000000000000
-  cardBackIcons: 0200000002000000000000000000000000000000
+  cardIcons: 0900000003000000210000000000000000000000
+  cardBackIcons: 0300000002000000020000000000000000000000
   cardAnimation: 
   cardEffects: []
-  cardCorPass: []
+  cardCorPass:
+  - value1: 0
+    value2: 0
+    value3: 10
+    stringValue: 
+    targetType: 0
+    caster: {fileID: 0}
+    effectType: 9
   cardCorFail:
   - value1: 2
     value2: 4
@@ -38,7 +45,7 @@ MonoBehaviour:
     effectType: 3
   - value1: 0
     value2: 0
-    value3: 25
+    value3: 15
     stringValue: 
     targetType: 0
     caster: {fileID: 0}

@@ -61,21 +61,29 @@ public class Card : ScriptableObject {
                 cardCorFail[j].caster = caster;
 
             //If its a boss card, select every player target and exectue
-            if (bossCard)
-                for (int i = 0; i < allyTargets.Count; i++)
-                    if (allyTargets[i].CorruptionCheck())
+            if (bossCard) {
+                bool corCheck;
+                for (int i = 0; i < allyTargets.Count; i++) {
+                    corCheck = allyTargets[i].CorruptionCheck();
+                    yield return DataManager.Instance.PlayParticle(allyTargets[i], corCheck);
+                    if (corCheck)
                         for (int j = 0; j < cardCorPass.Count; j++)
                             yield return cardCorPass[j].Activate(allyTargets[i]);
                     else
                         for (int j = 0; j < cardCorFail.Count; j++)
                             yield return cardCorFail[j].Activate(allyTargets[i]);
+                }
+            }
             //If its a player card, then corruption check the caster
-            else if (caster.CorruptionCheck())
+            else if (caster.CorruptionCheck()) {
+                yield return DataManager.Instance.PlayParticle(caster, true);
                 for (int j = 0; j < cardCorPass.Count; j++)
                     yield return cardCorPass[j].Activate(caster);
-            else
+            } else {
+                yield return DataManager.Instance.PlayParticle(caster, true);
                 for (int j = 0; j < cardCorFail.Count; j++)
                     yield return cardCorFail[j].Activate(caster);
+            }
         }
 
         //Go through each effect and execute
@@ -106,16 +114,17 @@ public class Card : ScriptableObject {
         if (cardAllyTargets > 0) {
             //Make sure there aren't more targets to choose than available.
             int survivingAllies = 0;
+            int targets = cardAllyTargets;
             for (int i = 0; i < GameManager.Instance.Party().Count; i++)
-                if (!GameManager.Instance.Party()[i].Defeated) survivingAllies++;
+                if (!GameManager.Instance.Party()[i].Defeated && GameManager.Instance.Party()[i].Status.Shrouded == 0) survivingAllies++;
             if (cardAllyTargets > survivingAllies)
-                cardAllyTargets = survivingAllies;
+                targets = survivingAllies;
             //Get the boss to choose each ally they will target
             if (bossCard) {
                 allyTargets.Clear();
                 Character targ;
                 int index;
-                for (int i = 0; i < cardAllyTargets; i++) {
+                for (int i = 0; i < targets; i++) {
                     do {
                         index = UnityEngine.Random.Range(0, 4);
                     } while (GameManager.Instance.Party()[index].Defeated
@@ -135,6 +144,7 @@ public class Card : ScriptableObject {
         if (cardEnemyTargets > 0) {
             //Make sure there aren't more targets to choose than available.
             int survivingEnemies = 0;
+            int targets = cardEnemyTargets;
             for (int i = 0; i < GameManager.Instance.Foes().Count; i++)
                 if (!GameManager.Instance.Foes()[i].Defeated) survivingEnemies++;
             if (cardEnemyTargets > survivingEnemies)
@@ -145,7 +155,7 @@ public class Card : ScriptableObject {
             if (bossCard) {
                 Character targ;
                 int index;
-                for (int i = 0; i < cardEnemyTargets; i++) {
+                for (int i = 0; i < targets; i++) {
                     do {
                         index = UnityEngine.Random.Range(0, GameManager.Instance.Foes().Count);
                     } while (GameManager.Instance.Foes()[index].Defeated

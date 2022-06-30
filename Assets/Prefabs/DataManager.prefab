@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &280088286157434871
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 280088286157434873}
+  - component: {fileID: 280088286157434870}
+  m_Layer: 0
+  m_Name: DataManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &280088286157434873
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 280088286157434871}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &280088286157434870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 280088286157434871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1ca424c8fe791e41af04ea1b4e97068, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characters:
+  - {fileID: 11400000, guid: d6c9c2f350168e4438b7864b0201c524, type: 2}
+  - {fileID: 11400000, guid: e257643b8e31a1342861aeef0ab01444, type: 2}
+  - {fileID: 11400000, guid: bc2fd6043e6b4304b94e59398b74f435, type: 2}
+  - {fileID: 11400000, guid: 551702d43f4dfec4685ba1c37bbf3879, type: 2}
+  - {fileID: 11400000, guid: ca21f65509b48a84ea0421f34dd1e6cc, type: 2}
+  - {fileID: 11400000, guid: deb29f5932104064796af24e8c6f6762, type: 2}
+  - {fileID: 11400000, guid: d9becb1ca258b9c4b997987b1fc98207, type: 2}
+  CorruptionCheck: {fileID: 4198270172957219160, guid: 07f6665c21f1d5a4fa647f0be4b19820, type: 3}
+  CorruptionFail: {fileID: 7184809182074599930, guid: ec392fe53ceff734cb142fad284136a9, type: 3}
+  ArmoredEffect: {fileID: 5631727885826425285, guid: 400be06e0a020f9468ce2a12ffd29001, type: 3}
+  BleedEffect: {fileID: 444631503974980832, guid: 2705abb29f281c54c9c4c2f96d3f4c9d, type: 3}
+  BuffEffect: {fileID: 325459061793211053, guid: 5607bece3bd62b24a9b5ef4e63c0206c, type: 3}
+  BurnEffect: {fileID: 1884753089456152641, guid: ff049df0fd0ed484fab15eb04cd19ad4, type: 3}
+  DebuffEffect: {fileID: 3674947027992037468, guid: 830e87f1c1e11d2498cbddc16ea208bb, type: 3}
+  RejuvenateEffect: {fileID: 686873179521172344, guid: c5d259617224f7b42b563957d62d471a, type: 3}
+  ShroudEffect: {fileID: 165873758795511680, guid: bb749ed637a82a5459ea12c8ec3974e7, type: 3}
+  StunEffect: {fileID: 3725481301222171612, guid: b7a146787677b68428a8691e3128d596, type: 3}
