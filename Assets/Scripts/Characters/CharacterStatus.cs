@@ -82,64 +82,66 @@ public class CharacterStatus {
 
     public IEnumerator ResolveEffects() {
         if (character.Defeated) yield break;
-        advance = false;
-        slow = false;
-        //Positive effects
-        if (haste > 0) haste--;
-        if (shroud > 0) shroud--;
-        if (taunt > 0) taunt--;
-        //Negative effects
-        if (blind > 0) blind--;
-        if (curse > 0) curse--;
-        if (mark > 0) mark--;
-        if (stun > 0) {
-            stun--;
-            yield return DataManager.Instance.PlayParticle(character, Enums.CardEffects.Stun);
-            yield return new WaitForSeconds(0.5f);
-        }
-        if (silence > 0) silence--;
-        if (sleep > 0) sleep--;
-        //DoTs
-        for (int i = 0; i < bleeds.Count; i++) {
-            yield return DataManager.Instance.PlayParticle(character, Enums.CardEffects.Bleed);
-            yield return new WaitForSeconds(0.5f);
-            character.Health -= bleeds[i].Damage;
-            bleeds[i].Turns--;
-            if (bleeds[i].Turns <= 0) {
-                bleeds.Remove(bleeds[i]);
-                i--;
+        try {
+            advance = false;
+            slow = false;
+            //Positive effects
+            if (haste > 0) haste--;
+            if (shroud > 0) shroud--;
+            if (taunt > 0) taunt--;
+            //Negative effects
+            if (blind > 0) blind--;
+            if (curse > 0) curse--;
+            if (mark > 0) mark--;
+            if (stun > 0) {
+                stun--;
+                yield return DataManager.Instance.PlayParticle(character, Enums.CardEffects.Stun);
+                yield return new WaitForSeconds(0.5f);
             }
-        }
-        for (int i = 0; i < burns.Count; i++) {
-            yield return DataManager.Instance.PlayParticle(character, Enums.CardEffects.Burn);
-            yield return new WaitForSeconds(0.5f);
-            character.Health -= burns[i].Damage;
-            burns[i].Turns--;
-            if (burns[i].Turns <= 0) {
-                burns.Remove(burns[i]);
-                i--;
+            if (silence > 0) silence--;
+            if (sleep > 0) sleep--;
+            //DoTs
+            for (int i = 0; i < bleeds.Count; i++) {
+                yield return DataManager.Instance.PlayParticle(character, Enums.CardEffects.Bleed);
+                yield return new WaitForSeconds(0.5f);
+                character.Health -= bleeds[i].Damage;
+                bleeds[i].Turns--;
+                if (bleeds[i].Turns <= 0) {
+                    bleeds.Remove(bleeds[i]);
+                    i--;
+                }
             }
-        }
-        for (int i = 0; i < poisons.Count; i++) {
-            yield return DataManager.Instance.PlayParticle(character, Enums.CardEffects.Poison);
-            yield return new WaitForSeconds(0.5f);
-            character.Health -= poisons[i].Damage;
-            poisons[i].Turns--;
-            if (poisons[i].Turns <= 0) {
-                poisons.Remove(poisons[i]);
-                i--;
+            for (int i = 0; i < burns.Count; i++) {
+                yield return DataManager.Instance.PlayParticle(character, Enums.CardEffects.Burn);
+                yield return new WaitForSeconds(0.5f);
+                character.Health -= burns[i].Damage;
+                burns[i].Turns--;
+                if (burns[i].Turns <= 0) {
+                    burns.Remove(burns[i]);
+                    i--;
+                }
             }
-        }
-        for (int i = 0; i < rejuvenations.Count; i++) {
-            yield return DataManager.Instance.PlayParticle(character, Enums.CardEffects.Rejuvenate);
-            yield return new WaitForSeconds(0.5f);
-            character.Health += rejuvenations[i].Damage;
-            rejuvenations[i].Turns--;
-            if (rejuvenations[i].Turns <= 0) {
-                rejuvenations.Remove(rejuvenations[i]);
-                i--;
+            for (int i = 0; i < poisons.Count; i++) {
+                yield return DataManager.Instance.PlayParticle(character, Enums.CardEffects.Poison);
+                yield return new WaitForSeconds(0.5f);
+                character.Health -= poisons[i].Damage;
+                poisons[i].Turns--;
+                if (poisons[i].Turns <= 0) {
+                    poisons.Remove(poisons[i]);
+                    i--;
+                }
             }
-        }
+            for (int i = 0; i < rejuvenations.Count; i++) {
+                yield return DataManager.Instance.PlayParticle(character, Enums.CardEffects.Rejuvenate);
+                yield return new WaitForSeconds(0.5f);
+                character.Health += rejuvenations[i].Damage;
+                rejuvenations[i].Turns--;
+                if (rejuvenations[i].Turns <= 0) {
+                    rejuvenations.Remove(rejuvenations[i]);
+                    i--;
+                }
+            }
+        } finally { }
     }
 
     public void Dead() {

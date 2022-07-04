@@ -69,17 +69,20 @@ public class DataManager : MonoBehaviour {
         }
         particles.transform.parent = target.ParticlePoint.transform;
         particles.transform.localPosition = Vector3.zero;
+        particles.transform.localScale = Vector3.one;
         yield return new WaitForSeconds(0.5f);
     }
     public IEnumerator PlayParticle(Character target, bool corCheck) {
         GameObject particles = Instantiate(CorruptionCheck);
         particles.transform.parent = target.transform;
         particles.transform.localPosition = Vector3.zero;
+        particles.transform.localScale = Vector3.one;
         yield return new WaitForSeconds(2f);
         if (!corCheck) {
             particles = Instantiate(CorruptionFail);
             particles.transform.parent = target.ParticlePoint.transform;
             particles.transform.localPosition = Vector3.zero;
+            particles.transform.localScale = Vector3.one;
             yield return new WaitForSeconds(0.5f);
         }
     }
