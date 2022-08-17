@@ -16,13 +16,14 @@ public class TempMainMenuScript : MonoBehaviour {
     private int storyIndex;
 
     public void NewGame() {
-        PlayerData.location = "Jester's Playground";
-        StartCoroutine(SceneController.Instance.OpenGame("Base Scene")); 
+        PlayerData.location = 1;
+        StartCoroutine(SceneController.Instance.OpenGame("Base")); 
     }
 
     public void BossRush() {
-        PlayerData.location = "BossRushArena";
-        StartCoroutine(SceneController.Instance.OpenGame("BossRush"));
+        Debug.Log("<color=red>Load Error:</color> Boss rush no longer available");
+        //PlayerData.location = "BossRushArena";
+        //StartCoroutine(SceneController.Instance.OpenGame("BossRush"));
     }
 
     public void Exit() { Application.Quit(); }

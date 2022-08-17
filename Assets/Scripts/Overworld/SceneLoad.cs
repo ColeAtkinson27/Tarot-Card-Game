@@ -15,7 +15,7 @@ public class SceneLoad : MonoBehaviour {
     private void StartLoad() {
         if (!locationDisplayName.Equals("")) {
             if (!locationDisplayName.Equals(PlayerData.location)) {
-                PlayerData.location = locationDisplayName;
+                //PlayerData.location = locationDisplayName;
                 StartCoroutine(UIManager.Instance.DisplayLocationName(locationDisplayName));
             }
         }

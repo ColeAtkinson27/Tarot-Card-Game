@@ -35,7 +35,7 @@ public class SceneController : MonoBehaviour {
     public IEnumerator OpenGame(string baseLevel) {
         SceneManager.LoadScene(baseLevel);
         while(!SceneManager.GetSceneByName(baseLevel).IsValid()) yield return null;
-        LoadScene(PlayerData.location);
+        //LoadScene(PlayerData.location);
         //while (!UIManager.Instance) { Debug.Log("UI: " + UIManager.Instance); yield return new WaitForSeconds(1f); }
         //Debug.Log("Opening curtains");
         //yield return UIManager.Instance.OpenCurtains();
@@ -89,6 +89,9 @@ public class SceneController : MonoBehaviour {
     public IEnumerator EnterCombatScene (Enums.Affinity boss) {
         yield return UIManager.Instance.CloseCurtains();
         switch(boss) {
+            case Enums.Affinity.Any:
+                currentBoss = "Combat";
+                break;
             case Enums.Affinity.Fool:
                 currentBoss = "Fight Fool";
                 break;
