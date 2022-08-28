@@ -7,6 +7,7 @@ public class DataManager : MonoBehaviour {
     public static DataManager Instance { get { return instance; } }
 
     [SerializeField] private List<CharacterData> characters = new List<CharacterData>();
+    [SerializeField] private List<EnemyCharacter> enemies = new List<EnemyCharacter>();
 
     [Header("Particles")]
     [SerializeField] private GameObject CorruptionCheck;
@@ -27,6 +28,11 @@ public class DataManager : MonoBehaviour {
         } else if (this != instance) {
             Destroy(gameObject);
         }
+    }
+
+    public EnemyCharacter Enemy(int index) {
+        if (index == 0) return null;
+        return Instantiate(enemies[index-1]); 
     }
 
     public CharacterData PartyMember(int index) { return characters[index]; }

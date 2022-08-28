@@ -17,7 +17,7 @@ MonoBehaviour:
   cardCorruptionPassDescription: Weaken the target
   cardCorruptionFailDescription: Deal 1-6 Fire damage
   cardFlavor: 
-  cardAffinity: 6
+  cardAffinity: 7
   cardAllyTargets: 1
   cardEnemyTargets: 0
   cardColor: {r: 0, g: 0, b: 0, a: 0}

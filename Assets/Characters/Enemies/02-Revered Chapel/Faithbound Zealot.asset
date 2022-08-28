@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05023242dcefaa84ea20fd4b09214819, type: 3}
+  m_Name: Faithbound Zealot
+  m_EditorClassIdentifier: 
+  primaryAffinity: 5
+  secondaryAffinity: 0
+  name: Faithbound Zealot
+  maxHealth: 10
+  avatar: {fileID: 0}
+  BossDeck:
+  - {fileID: 11400000, guid: b5e39d767125ea74eafa99291ea3256d, type: 2}
+  - {fileID: 11400000, guid: b5e39d767125ea74eafa99291ea3256d, type: 2}
+  - {fileID: 11400000, guid: 439ef427a4c662c42a27bd95df5deba2, type: 2}
+  orderSpeed: 4
+  basicAttack:
+    dieNum: 1
+    dieSize: 4
+    bonus: 0
+  weaknesses: 
+  resistances: 

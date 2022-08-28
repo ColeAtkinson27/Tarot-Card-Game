@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b95fb39de2dd39945840ebe471fa3f0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardName: Pained Frenzy
+  cardDescription: Deal 1-6 Physical damage to two targets and inflilct 10 Soul Taint
+  cardCorruptionPassDescription: 
+  cardCorruptionFailDescription: 
+  cardFlavor: 
+  cardAffinity: 5
+  cardAllyTargets: 2
+  cardEnemyTargets: 0
+  cardColor: {r: 0, g: 0, b: 0, a: 0}
+  exiled: 0
+  bossCard: 0
+  cardIcons: 1700000009000000000000000000000000000000
+  cardBackIcons: 0100000001000000000000000000000000000000
+  cardAnimation: 
+  cardEffects:
+  - value1: 1
+    value2: 6
+    value3: 0
+    stringValue: 
+    targetType: 2
+    caster: {fileID: 0}
+    effectType: 23
+  - value1: 0
+    value2: 0
+    value3: 10
+    stringValue: 
+    targetType: 2
+    caster: {fileID: 0}
+    effectType: 9
+  cardCorPass: []
+  cardCorFail: []

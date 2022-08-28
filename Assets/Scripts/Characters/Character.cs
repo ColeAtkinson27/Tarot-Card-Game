@@ -34,21 +34,26 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
                 status.Dead();
 
                 Defeated = true;
+                try { animator.SetTrigger("Defeated"); } catch (System.Exception e) { }
+                try { animator.SetBool("isDead", true); } catch (System.Exception e) { }
 
-                CombatUIManager.Instance.SetDamageText(health - newValue, transform);
+                if (CombatUIManager.Instance)
+                    CombatUIManager.Instance.SetDamageText(health - newValue, transform);
 
                 //try { animator.SetBool("Death", true); } catch (System.Exception e) { Debug.Log("Character error: No animation controller set"); }
 
             }
             else if(health > newValue) {
-                CombatUIManager.Instance.SetDamageText(health - newValue, transform);
-                //try { animator.SetTrigger("Hit"); } catch (System.Exception e) { Debug.Log("Character error: No animation controller set"); }
+                if (CombatUIManager.Instance)
+                    CombatUIManager.Instance.SetDamageText(health - newValue, transform);
+                try { animator.SetTrigger("Hit"); } catch (System.Exception e) { }
 
                 //AudioManager.audioMgr.PlayCharacterSFX(SFX, "Hurt");
 
             }
             else {
-                CombatUIManager.Instance.SetDamageText(newValue - health, transform, Color.green);
+                if (CombatUIManager.Instance)
+                    CombatUIManager.Instance.SetDamageText(newValue - health, transform, Color.green);
 
                 //AudioManager.audioMgr.PlayUISFX("Heal");
                 //try { animator.SetBool("Death", false); } catch (System.Exception e) { Debug.Log("Character error: No animation controller set"); }
@@ -84,7 +89,8 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
                 //AudioManager.audioMgr.PlayUISFX("CorruptionCleanse");
             }
 
-            CombatUIManager.Instance.SetDamageText(value - corruption, transform, new Color32(139, 0, 139, 0));
+            if (CombatUIManager.Instance)
+                CombatUIManager.Instance.SetDamageText(value - corruption, transform, new Color32(139, 0, 139, 0));
             corruption = value;
         }
     }
@@ -250,6 +256,7 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
     }
 
     public virtual void Awake() {
+        status = new CharacterStatus(this);
         health = data.MaxHP;
         corruption = 25;
         Action = Enums.Action.Attack;
@@ -257,7 +264,6 @@ public abstract class Character : MonoBehaviour, ITurnExecutable, ITargetable
     }
 
     public virtual void Start() {
-        status = new CharacterStatus(this);
         Debug.Log($"Creating {this.gameObject.name}");
 
         //SFX = GameManager.manager.getChildGameObject(this.gameObject, "CharacterSFX");

@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour {
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private DisplayText locationTitle;
     [SerializeField] private DeckBuilder draftManager;
+    [SerializeField] private GameObject gameOverMenu;
 
     [Header("Pause")]
     [SerializeField] private CardMenusDisplay cardDisplay;
@@ -33,18 +34,6 @@ public class UIManager : MonoBehaviour {
         StartCoroutine(OpenCurtains());
     }
 
-    void Update() {
-        if (Input.GetKeyDown(KeyCode.Escape) && !disableMenu)
-            StartCoroutine(ToggleMenu());
-    }
-
-    public IEnumerator DisplayLocationName (string name, float duration = 5f) {
-        locationTitle.SetMessage(name);
-        yield return new WaitForSeconds(duration);
-        locationTitle.StartFade();
-        locationTitle.SetMessage("");
-    }
-
     private IEnumerator ToggleMenu() {
         disableMenu = true;
         menuOpen = !menuOpen;
@@ -63,13 +52,13 @@ public class UIManager : MonoBehaviour {
         bool[] inParty = new bool[6];
         for (int i = 0; i < 4; i++) {
             characterDisplays[i].SetCharacter(DataManager.Instance.PartyMember(PlayerData.party[i]));
-            inParty[(PlayerData.party[i]-1)] = true;
+            inParty[(PlayerData.party[i])] = true;
         }
         int charNotInPartyDisplay = 4;
         for (int i = 0; i < inParty.Length; i++) {
             if (charNotInPartyDisplay == inParty.Length) break;
             if (!inParty[i]) {
-                characterDisplays[charNotInPartyDisplay].SetCharacter(DataManager.Instance.PartyMember(i + 1));
+                characterDisplays[charNotInPartyDisplay].SetCharacter(DataManager.Instance.PartyMember(i));
                 charNotInPartyDisplay++;
             }
         }
@@ -90,12 +79,8 @@ public class UIManager : MonoBehaviour {
         }
         curtainLeft.rectTransform.position = new Vector3(-Screen.width * 1.2f / 4, Screen.height / 2, 0);
         curtainRight.rectTransform.position = new Vector3(Screen.width * 5.2f / 4, Screen.height / 2, 0);
-        SceneController.Instance.Player.enabled = true;
-        SceneController.Instance.Camera.enabled = true;
     }
     public IEnumerator CloseCurtains() {
-        SceneController.Instance.Player.enabled = false;
-        SceneController.Instance.Camera.enabled = false;
         float count = 0;
         Vector3 leftStart = new Vector3(-Screen.width * 1.2f / 4, Screen.height / 2, 0);
         Vector3 rightStart = new Vector3(Screen.width * 5.2f / 4, Screen.height / 2, 0);
@@ -122,15 +107,21 @@ public class UIManager : MonoBehaviour {
     public void StartDraft(CardDraftPool pool) {
         draftManager.gameObject.SetActive(true);
         draftManager.StartDraft(pool);
-        SceneController.Instance.Player.gameObject.SetActive(false);
-        SceneController.Instance.Camera.gameObject.SetActive(false);
     }
 
     public void EndDraft() {
         draftManager.gameObject.SetActive(false);
-        SceneController.Instance.Player.gameObject.SetActive(true);
-        SceneController.Instance.Camera.gameObject.SetActive(true);
-        CombatStart.EndCombat();
         StartCoroutine(OpenCurtains());
+    }
+
+    public IEnumerator GameOver() {
+        yield return CloseCurtains();
+        gameOverMenu.SetActive(true);
+    }
+
+    public void ReturnToCheckpoint() {
+        gameOverMenu.SetActive(false);
+        PlayerData.RevertCheckpointSave();
+        LevelDirectory.LastCheckpoint();
     }
 }
