@@ -10,36 +10,29 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b95fb39de2dd39945840ebe471fa3f0a, type: 3}
-  m_Name: Penance through Pain
+  m_Name: Playful Prank
   m_EditorClassIdentifier: 
-  cardName: Penance through Pain
-  cardDescription: Deal 1-6 damage to a target and Rejuvenate (3/2) self.
+  cardName: Playful Prank
+  cardDescription: Inflict Poison (2/2) to two targets.
   cardCorruptionPassDescription: 
   cardCorruptionFailDescription: 
   cardFlavor: 
   cardAffinity: 5
-  cardAllyTargets: 1
+  cardAllyTargets: 2
   cardEnemyTargets: 0
   cardColor: {r: 0, g: 0, b: 0, a: 0}
   exiled: 0
   bossCard: 1
-  cardIcons: 170000001a000000000000000000000000000000
-  cardBackIcons: 0100000001000000000000000000000000000000
+  cardIcons: 1800000000000000000000000000000000000000
+  cardBackIcons: 0100000000000000000000000000000000000000
   cardAnimation: 
   cardEffects:
-  - value1: 1
-    value2: 6
+  - value1: 2
+    value2: 2
     value3: 0
     stringValue: 
     targetType: 2
     caster: {fileID: 0}
-    effectType: 23
-  - value1: 3
-    value2: 2
-    value3: 0
-    stringValue: 
-    targetType: 1
-    caster: {fileID: 0}
-    effectType: 26
+    effectType: 24
   cardCorPass: []
   cardCorFail: []

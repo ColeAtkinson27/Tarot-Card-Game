@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b95fb39de2dd39945840ebe471fa3f0a, type: 3}
-  m_Name: 
+  m_Name: Reflection
   m_EditorClassIdentifier: 
   cardName: Reflection
   cardDescription: Bolster self.
@@ -22,7 +22,7 @@ MonoBehaviour:
   cardEnemyTargets: 0
   cardColor: {r: 0, g: 0, b: 0, a: 0}
   exiled: 0
-  bossCard: 0
+  bossCard: 1
   cardIcons: 0500000000000000000000000000000000000000
   cardBackIcons: 0100000000000000000000000000000000000000
   cardAnimation: 
