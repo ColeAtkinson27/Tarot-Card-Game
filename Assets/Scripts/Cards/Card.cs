@@ -52,7 +52,9 @@ public class Card : ScriptableObject {
     public Enums.CardIconBack[] IconsBack { get { return cardBackIcons; } }
 
     //Play the card
-    public IEnumerator Activate () {
+    public IEnumerator Activate (Character character) {
+        Caster = character;
+        try { caster.Animator.SetTrigger(cardAnimation); } catch(Exception e) { Debug.Log("Character error: No animation controller set"); }
         //Check for a corruption check and execute
         if (cardCorPass.Count > 0 || cardCorFail.Count > 0) {
             for (int j = 0; j < cardCorPass.Count; j++)

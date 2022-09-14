@@ -105,6 +105,10 @@ public class CharacterStatus {
                 yield return DataManager.Instance.PlayParticle(character, Enums.CardEffects.Bleed);
                 yield return new WaitForSeconds(0.5f);
                 character.Health -= bleeds[i].Damage;
+                if (character.Defeated) {
+                    Dead();
+                    yield break;
+                }
                 bleeds[i].Turns--;
                 if (bleeds[i].Turns <= 0) {
                     bleeds.Remove(bleeds[i]);
@@ -115,6 +119,10 @@ public class CharacterStatus {
                 yield return DataManager.Instance.PlayParticle(character, Enums.CardEffects.Burn);
                 yield return new WaitForSeconds(0.5f);
                 character.Health -= burns[i].Damage;
+                if (character.Defeated) {
+                    Dead();
+                    yield break;
+                }
                 burns[i].Turns--;
                 if (burns[i].Turns <= 0) {
                     burns.Remove(burns[i]);
@@ -125,6 +133,10 @@ public class CharacterStatus {
                 yield return DataManager.Instance.PlayParticle(character, Enums.CardEffects.Poison);
                 yield return new WaitForSeconds(0.5f);
                 character.Health -= poisons[i].Damage;
+                if (character.Defeated) {
+                    Dead();
+                    yield break;
+                }
                 poisons[i].Turns--;
                 if (poisons[i].Turns <= 0) {
                     poisons.Remove(poisons[i]);

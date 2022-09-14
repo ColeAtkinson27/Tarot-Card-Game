@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05023242dcefaa84ea20fd4b09214819, type: 3}
+  m_Name: Pain-Drunk Apostle
+  m_EditorClassIdentifier: 
+  primaryAffinity: 0
+  secondaryAffinity: 0
+  name: Pain-Drunk Apostle
+  maxHealth: 45
+  avatar: {fileID: 0}
+  BossDeck:
+  - {fileID: 11400000, guid: 088d304f7f7f7e5438eb2e4f1ad1f7de, type: 2}
+  - {fileID: 11400000, guid: 81a46e88a708d3c478e3c4ae768524ea, type: 2}
+  - {fileID: 11400000, guid: 6fc813d3b9dd0ff438556ca617ae1c4b, type: 2}
+  orderSpeed: 4
+  basicAttack:
+    dieNum: 1
+    dieSize: 4
+    bonus: 0
+  weaknesses: 
+  resistances: 

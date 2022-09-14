@@ -16,13 +16,17 @@ public class TempMainMenuScript : MonoBehaviour {
     private int storyIndex;
 
     public void NewGame() {
-        PlayerData.location = "Jester's Playground";
-        StartCoroutine(SceneController.Instance.OpenGame("Base Scene")); 
-    }
+        LevelDirectory.CurrentLevel = 0;
 
-    public void BossRush() {
-        PlayerData.location = "BossRushArena";
-        StartCoroutine(SceneController.Instance.OpenGame("BossRush"));
+        PlayerData.party = new int[] { 2, 3, 1, 4 };
+        PlayerData.partyHP = new int[6];
+        for (int i = 0; i < 6; i++) {
+            Debug.Log("<color=green>" + DataManager.Instance.PartyMember(i).Name + "</color> " + DataManager.Instance.PartyMember(i).MaxHP);
+            PlayerData.partyHP[i] = DataManager.Instance.PartyMember(i).MaxHP;
+        }
+        PlayerData.partyST = new int[] { 25, 25, 25, 25, 25, 25 };
+
+        StartCoroutine(SceneController.Instance.OpenGame()); 
     }
 
     public void Exit() { Application.Quit(); }

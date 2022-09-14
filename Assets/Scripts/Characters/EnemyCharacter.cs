@@ -5,6 +5,9 @@ using UnityEngine;
 public class EnemyCharacter : Character {
     [SerializeField] private int healthBar;
     protected Deck deck;
+
+    private int speed;
+    public int Speed { get { return speed; } set { speed = value; } }
     public override Card CardToPlay {
         get {
             return _cardToPlay;
@@ -25,14 +28,15 @@ public class EnemyCharacter : Character {
     }
     public int HealthBar { get { return healthBar; } }
     public override void Awake() {
+        status = new CharacterStatus(this);
         health = data.MaxHP;
         corruption = 0;
         Action = Enums.Action.Attack;
 
-        int count = 0;
-
+        deck = new Deck(data.Deck);
+        foreach (Card c in deck.CardList)
+            c.Caster = this;
         animator = GetComponentInChildren<Animator>();
-        //Any initialization in deck order
     }
 
     public override void Start() {
@@ -42,25 +46,19 @@ public class EnemyCharacter : Character {
     }
 
     public override IEnumerator GetTurn(){
-        Character target;
-    
-        do {
-            target = GameManager.Instance.Party(Random.Range(0, 4));
-            Debug.Log("Picking target");
-        } while (target.Defeated == true);
-        target = target.Targeted(this); //let the target know it has been targetted, and allow it to reassign the arget if it can
-        int dmg = data.basicAttack.Value;
-        Debug.Log($"Boss is attacking {target.data.name} for {dmg} HP!");
-        StartCoroutine(CombatUIManager.Instance.DisplayMessage($"Boss attacks {target.data.name} for {dmg} HP!"));
-
-        //Damage health
-        target.Health -= dmg;
-        CombatUIManager.Instance.SetDamageText(dmg, target.transform);
-        yield return new WaitForSeconds(0.25f);
-        //Increase corruption
-        target.Corruption += dmg * 2;
-        CombatUIManager.Instance.SetDamageText(dmg * 2, target.transform, new Color32(139, 0, 139, 0));
-        yield return new WaitForSeconds(1f);
+        deck.Shuffle();
+        if (Action != Enums.Action.Stunned && Health > 0) {
+            if (deck.CardList.Count == 0) deck.Reshuffle();
+            CardToPlay = deck.Draw();
+            yield return CombatUIManager.Instance.RevealCard(CardToPlay);
+            Debug.Log($"{name} playing card {CardToPlay.Name}");
+            CombatUIManager.Instance.DisplayMessage($"{name} plays {CardToPlay.Name}");
+            yield return CardToPlay.DesignateTargets();
+            yield return CardToPlay.Activate(this);
+            deck.CardList.Remove(CardToPlay);
+            deck.DiscardList.Add(CardToPlay);
+        }
+        yield return ResolveEffects();
     }
     public override void EndResolvePhase() {
         Action = Enums.Action.Card;

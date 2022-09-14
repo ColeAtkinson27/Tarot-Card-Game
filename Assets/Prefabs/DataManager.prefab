@@ -44,13 +44,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characters:
-  - {fileID: 11400000, guid: d6c9c2f350168e4438b7864b0201c524, type: 2}
   - {fileID: 11400000, guid: e257643b8e31a1342861aeef0ab01444, type: 2}
   - {fileID: 11400000, guid: bc2fd6043e6b4304b94e59398b74f435, type: 2}
   - {fileID: 11400000, guid: 551702d43f4dfec4685ba1c37bbf3879, type: 2}
   - {fileID: 11400000, guid: ca21f65509b48a84ea0421f34dd1e6cc, type: 2}
   - {fileID: 11400000, guid: deb29f5932104064796af24e8c6f6762, type: 2}
   - {fileID: 11400000, guid: d9becb1ca258b9c4b997987b1fc98207, type: 2}
+  enemies:
+  - {fileID: 6896742713071997579, guid: 2d21a3b35ee35e54a85fd8078e898486, type: 3}
+  - {fileID: 7192811145074208441, guid: c4889b5fbec677946b013651a0f6f571, type: 3}
+  - {fileID: 5901524297230894741, guid: dc2e9ca174d3eaf428cf43b8e0246a05, type: 3}
+  - {fileID: 1007754158622605778, guid: 2688f61e33f28ed46b227b8906fc35ca, type: 3}
+  - {fileID: 3720304171928401539, guid: bb96967675b816342b57d6cfb2728233, type: 3}
   CorruptionCheck: {fileID: 4198270172957219160, guid: 07f6665c21f1d5a4fa647f0be4b19820, type: 3}
   CorruptionFail: {fileID: 7184809182074599930, guid: ec392fe53ceff734cb142fad284136a9, type: 3}
   ArmoredEffect: {fileID: 5631727885826425285, guid: 400be06e0a020f9468ce2a12ffd29001, type: 3}

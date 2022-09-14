@@ -52,6 +52,7 @@ public static class Enums {
         Pentacle,
         Staff,
         Sword,
+        Any,
         Fool,
         Magician,
         Priestess,

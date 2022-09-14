@@ -7,9 +7,11 @@ public class PriestessCharacter : EnemyCharacter {
     [SerializeField] private int playRepent = 3;
 
     private void Awake() {
+        status = new CharacterStatus(this);
         health = data.MaxHP;
         corruption = 0;
         Action = Enums.Action.Attack;
+        Speed = data.Speed;
 
         deck = new Deck(data.Deck);
         foreach (Card c in deck.CardList)
@@ -30,7 +32,7 @@ public class PriestessCharacter : EnemyCharacter {
             Debug.Log($"{name} playing card {CardToPlay.Name}");
             CombatUIManager.Instance.DisplayMessage($"{name} plays {CardToPlay.Name}");
             yield return CardToPlay.DesignateTargets();
-            yield return CardToPlay.Activate();
+            yield return CardToPlay.Activate(this);
             deck.CardList.Remove(CardToPlay);
             deck.DiscardList.Add(CardToPlay);
         }

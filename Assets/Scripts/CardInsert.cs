@@ -18,9 +18,5 @@ public class CardInsert : MonoBehaviour {
         PlayerData.PentacleCards = new List<Card>(PlayerData.PentacleCardsOwned);
         PlayerData.StaffCards = new List<Card>(PlayerData.StaffCardsOwned);
         PlayerData.SwordCards = new List<Card>(PlayerData.SwordCardsOwned);
-        PlayerData.party[0] = 3;
-        PlayerData.party[1] = 4;
-        PlayerData.party[2] = 2;
-        PlayerData.party[3] = 5;
     }
 }

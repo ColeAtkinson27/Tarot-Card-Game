@@ -88,7 +88,7 @@ public class PartyCharacter : Character
 
             yield return CombatUIManager.Instance.RevealCard(CardToPlay);
             //Execute the selected card from the dropzone.
-            yield return CardToPlay.Activate();
+            yield return CardToPlay.Activate(this);
         } else if(Action == Enums.Action.Attack || Action == Enums.Action.Silenced) {
             yield return BasicAttack();
         }

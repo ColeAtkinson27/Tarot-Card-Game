@@ -17,7 +17,7 @@ MonoBehaviour:
   cardCorruptionPassDescription: Gain 25 Soul Taint
   cardCorruptionFailDescription: Take 5-10 Physical damage
   cardFlavor: 
-  cardAffinity: 5
+  cardAffinity: 6
   cardAllyTargets: 4
   cardEnemyTargets: 0
   cardColor: {r: 0, g: 0, b: 0, a: 0}

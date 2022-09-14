@@ -8,8 +8,10 @@ public class GameManager : MonoBehaviour {
 
     [Header("Arena Information")]
     [SerializeField] private Transform[] playerPositions = new Transform[4];
+    [SerializeField] private Transform[] enemyPositions = new Transform[7];
     [SerializeField] private Transform lookPosition;
     [SerializeField] private CardDraftPool Reward;
+    [SerializeField] private string flagClear;
 
     [Header("Combatants")]
     [SerializeField] private List<Character> party = new List<Character>();
@@ -55,6 +57,7 @@ public class GameManager : MonoBehaviour {
     void Start() {
         StartCoroutine(UIManager.Instance.OpenCurtains());
         InitializeCharacters();
+        InitializeEnemies();
         InitializeDecks();
         battleEnumerator = ExecuteBattle();
         StartCoroutine(battleEnumerator);
@@ -66,7 +69,7 @@ public class GameManager : MonoBehaviour {
             turns.Add(c);
         foreach (EnemyCharacter c in foes) {
             AddOpponent(c);
-            turns.Insert(c.data.Speed, c);
+            turns.Insert(c.Speed, c);
         }
         if (decks[Enums.Affinity.Chalice].CardList.Count == 16) {
             Draw(Enums.Affinity.Chalice);
@@ -216,14 +219,19 @@ public class GameManager : MonoBehaviour {
     public IEnumerator GameWinScreen(){
         yield return CombatUIManager.Instance.DisplayMessage("Congratulations", 6f);
         yield return UIManager.Instance.CloseCurtains();
-        UIManager.Instance.StartDraft(Reward);
-        SceneController.Instance.ExitCombatScene();
+        PlayerData.SetPlayerStats(party);
+        if (Reward) {
+            UIManager.Instance.StartDraft(Reward);
+            PlayerData.SetFlag(flagClear, true);
+            LevelDirectory.CurrentLevel = 0;
+        }
+        SceneController.Instance.NextLevel();
     }
 
     public IEnumerator GameOverScreen(){
         yield return CombatUIManager.Instance.DisplayMessage("Everyone has fallen...", 2f);
         yield return CombatUIManager.Instance.DisplayMessage("Your soul was claimed by the denizen", 4f);
-        yield return SceneController.Instance.ReturnToMainMenu();
+        yield return UIManager.Instance.GameOver();
     }
 
     //UI function, is called when the player presses the end planning button
@@ -282,27 +290,27 @@ public class GameManager : MonoBehaviour {
         PartyCharacter newchar;
         for (int i = 0; i < 4; i++) {
             switch (PlayerData.party[i]) {
-                case 1:
+                case 0:
                     newchar = (Instantiate(Resources.Load("Prefabs/Combat Characters/Player Chalice Pentacle")) 
                         as GameObject).GetComponent<PartyCharacter>();
                     break;
-                case 2:
+                case 1:
                     newchar = (Instantiate(Resources.Load("Prefabs/Combat Characters/Player Chalice Staff")) 
                         as GameObject).GetComponent<PartyCharacter>();
                     break;
-                case 3:
+                case 2:
                     newchar = (Instantiate(Resources.Load("Prefabs/Combat Characters/Player Chalice Sword")) 
                         as GameObject).GetComponent<PartyCharacter>();
                     break;
-                case 4:
+                case 3:
                     newchar = (Instantiate(Resources.Load("Prefabs/Combat Characters/Player Pentacle Staff")) 
                         as GameObject).GetComponent<PartyCharacter>();
                     break;
-                case 5:
+                case 4:
                     newchar = (Instantiate(Resources.Load("Prefabs/Combat Characters/Player Pentacle Sword")) 
                         as GameObject).GetComponent<PartyCharacter>();
                     break;
-                case 6:
+                case 5:
                     newchar = (Instantiate(Resources.Load("Prefabs/Combat Characters/Player Staff Sword")) 
                         as GameObject).GetComponent<PartyCharacter>();
                     break;
@@ -310,6 +318,8 @@ public class GameManager : MonoBehaviour {
                     continue;
             }
             party.Add(newchar);
+            newchar.Health = PlayerData.partyHP[PlayerData.party[i]];
+            newchar.Corruption = PlayerData.partyST[PlayerData.party[i]];
             CombatUIManager.Instance.SetInfo(newchar, i);
             newchar.transform.position = playerPositions[i].position;
             newchar.transform.SetParent(transform);
@@ -318,6 +328,46 @@ public class GameManager : MonoBehaviour {
                 newchar.transform.LookAt(lookPosition);
             else
                 newchar.transform.LookAt(Vector3.zero);
+        }
+    }
+
+    public void InitializeEnemies() {
+        List<int> encounter = LevelDirectory.GetEncounter();
+        if (encounter == null) return;
+        EnemyCharacter newEnemy;
+        int nulls = 0;
+        for (int i=0; i < encounter.Count; i++) {
+            newEnemy = DataManager.Instance.Enemy(encounter[i]);
+            if (newEnemy == null) {
+                nulls++;
+                continue;
+            }
+            foes.Add(newEnemy);
+            newEnemy.transform.position = enemyPositions[i].position;
+            newEnemy.transform.SetParent(transform);
+            switch (i) {
+                case 0:
+                    newEnemy.Speed = 2;
+                    break;
+                case 1:
+                    newEnemy.Speed = 1;
+                    break;
+                case 2:
+                    newEnemy.Speed = 5 - nulls;
+                    break;
+                case 3:
+                    newEnemy.Speed = 1;
+                    break;
+                case 4:
+                    newEnemy.Speed = 7 - nulls;
+                    break;
+                case 5:
+                    newEnemy.Speed = 0;
+                    break;
+                case 6:
+                    newEnemy.Speed = 10 - nulls;
+                    break;
+            }
         }
     }
 
@@ -334,9 +384,12 @@ public class GameManager : MonoBehaviour {
     }
 
     public void AddOpponent(EnemyCharacter eCharacter) {
-        if (!foes.Contains(eCharacter))
-            foes.Add(eCharacter);
-        CombatUIManager.Instance.SetInfo(eCharacter, eCharacter.HealthBar);
+        if (eCharacter) {
+            if (!foes.Contains(eCharacter))
+                foes.Add(eCharacter);
+            if (eCharacter.HealthBar >= 0)
+                CombatUIManager.Instance.SetInfo(eCharacter, eCharacter.HealthBar);
+        }
     }
 }
 

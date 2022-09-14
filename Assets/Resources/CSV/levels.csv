@@ -1,0 +1,17 @@
+ID,Scene,Backdrop,Encounters		
+0,Fight Fool,Fool			
+1,Hub,Clearbrook			
+2,Combat,Library,000|001|001,002	
+3,Combat,Library,000|001|001|001|001,002|001|001,000|002|002
+4,Rest Area,Library			
+5,Fight Magician,Magician			
+6,Combat,Chapel,003|003|003,004|003|004,000|004|004
+7,Combat,Chapel,000|003|003|003|003,000|003|003|004|004,004|004|004
+8,Combat,Chapel,005|004|004		
+9,Rest Area,Chapel			
+10,Fight Priestess,Priestess				
+11,Combat,Courtyard,006|006|006
+12,Combat,Courtyard,000|006|006|006|006,007|006|006,000|007|007
+13,Combat,Courtyard,007|007|007,006|007|007|006|006
+14,Rest Area,Courtyard			
+15,Fight Empress,Empress			

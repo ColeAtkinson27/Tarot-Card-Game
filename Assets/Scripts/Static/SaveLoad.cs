@@ -77,19 +77,13 @@ public static class SaveLoad {
         int timestamp = (int) Time.realtimeSinceStartup;
         player.PlayTimeInSeconds += timestamp - startTime;
         startTime = timestamp;
-
-        //Save Location
-        player.SetPlayerCoords(SceneController.Instance.Player.transform.localPosition);
-        player.SetPlayerRot(SceneController.Instance.Player.transform.rotation);
-        player.CameraRot = SceneController.Instance.Camera.CurrentGameOrbit;
     }
 
     private static void LoadGameState () {
         try {
             startTime = (int)Time.realtimeSinceStartup;
-
-            SceneController.Instance.LoadScene(player.SceneName, player.GetPlayerCoords(),
-                player.GetPlayerRot(), Vector3.zero, player.CameraRot);
+            LevelDirectory.CurrentLevel = player.CurrentLevel;
+            SceneController.Instance.LoadLevel();
         } catch (Exception e) {
             Debug.Log("<color=red>Game Load error:</color> " + e.ToString() + "\n" + e.StackTrace);
             SceneController.Instance.ReturnToMainMenu();

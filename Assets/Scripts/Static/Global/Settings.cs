@@ -93,7 +93,7 @@ public static class Settings {
             Brightness = PlayerPrefs.GetFloat("Brightness");
         }
         SetProperties();
-        Debug.Log("<color=yellow>Player settings loaded.</color>");
+        Debug.Log("<color=green>Player settings loaded.</color>");
     }
     /** <summary>Saves the current game settings into the Player Preferences</summary> */
     public static void ConfirmSettings () {

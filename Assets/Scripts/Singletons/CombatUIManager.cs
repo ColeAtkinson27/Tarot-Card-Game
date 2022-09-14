@@ -28,6 +28,10 @@ public class CombatUIManager : MonoBehaviour {
     [SerializeField] private GameObject combatUI;
     [SerializeField] private GameObject symbolsUI;
 
+    [Header("Arenas")]
+    [SerializeField] private List<GameObject> arenaGOs;
+    [SerializeField] private List<string> arenaNames;
+
     private bool enableDrag = false;
     private DamageText PopupDamageText;
 
@@ -42,6 +46,16 @@ public class CombatUIManager : MonoBehaviour {
         else if (this != instance)
             Destroy(this);
         PopupDamageText = Resources.Load<DamageText>("Prefabs/DamagePopUp");
+    }
+    
+    void Start() {
+        string sceneName = LevelDirectory.GetSceneBackdrop();
+        for (int i = 0; i < arenaNames.Count; i++) {
+            if (arenaNames[i].Equals(sceneName)) {
+                arenaGOs[i].SetActive(true);
+                break;
+            }
+        }
     }
 
     public void StartDraw() {

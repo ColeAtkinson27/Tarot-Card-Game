@@ -17,7 +17,7 @@ MonoBehaviour:
   cardCorruptionPassDescription: Inflict 15 Soul Taint
   cardCorruptionFailDescription: Stun the target
   cardFlavor: 
-  cardAffinity: 6
+  cardAffinity: 7
   cardAllyTargets: 2
   cardEnemyTargets: 0
   cardColor: {r: 0, g: 0, b: 0, a: 0}
