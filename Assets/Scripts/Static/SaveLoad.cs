@@ -14,7 +14,7 @@ public static class SaveLoad {
     public static void SaveMeta () {
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + "/tarotSaves.smd");
-        bf.Serialize(file, SaveLoad.saveMetas);
+        bf.Serialize(file, saveMetas);
         file.Close();
     }
     public static void LoadMeta() {
@@ -22,7 +22,7 @@ public static class SaveLoad {
             BinaryFormatter bf = new BinaryFormatter();
             FileStream file = File.Open(Application.persistentDataPath + "/tarotSaves.smd", FileMode.Open);
             try {
-                SaveLoad.saveMetas = (SaveMetaData)bf.Deserialize(file);
+                saveMetas = (SaveMetaData)bf.Deserialize(file);
                 file.Close();
             } catch (Exception e) {
                 file.Close();
@@ -36,11 +36,12 @@ public static class SaveLoad {
             SaveGameState();
             BinaryFormatter bf = new BinaryFormatter();
             FileStream file = File.Create(Application.persistentDataPath + "/playerData" + slot + ".tgd");
-            bf.Serialize(file, SaveLoad.player);
+            bf.Serialize(file, player);
             file.Close();
 
             saveMetas.SavesPlayTime[slot] = player.PlayTimeInSeconds;
             SaveMeta();
+            Debug.Log("<color=green>Game Saved:</color> Game saved to slot " + slot + ". Difficulty = " + saveMetas.SavesDifficulty[slot] + ".");
         } else {
             Debug.Log("<color=red>Game Save error:</color> Failed to save game to slot " + slot + ". Slot out of bounds.");
         }
@@ -51,7 +52,7 @@ public static class SaveLoad {
             if (File.Exists(Application.persistentDataPath + "/playerData" + slot + ".tgd")) {
                 BinaryFormatter bf = new BinaryFormatter();
                 FileStream file = File.Open(Application.persistentDataPath + "/playerData" + slot + ".tgd", FileMode.Open);
-                SaveLoad.player = (PlayerSaveData)bf.Deserialize(file);
+                player = (PlayerSaveData)bf.Deserialize(file);
                 file.Close();
                 LoadGameState();
             }
@@ -64,8 +65,9 @@ public static class SaveLoad {
         if (slot >= 0 && slot < 8) {
             if (File.Exists(Application.persistentDataPath + "/playerData" + slot + ".tgd")) {
                 File.Delete(Application.persistentDataPath + "/playerData" + slot + ".tgd");
-                saveMetas.SavesCardProg[slot] = 0;
+                saveMetas.SavesDifficulty[slot] = 0;
                 saveMetas.SavesPlayTime[slot] = 0;
+                saveMetas.SavesProgress[slot] = 0;
                 SaveMeta();
             }
         } else {

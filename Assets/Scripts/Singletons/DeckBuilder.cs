@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using System;
+using static Constants;
 
 public class DeckBuilder : MonoBehaviour {
     
@@ -68,28 +68,28 @@ public class DeckBuilder : MonoBehaviour {
             switch(card.CardData.Affinity) {
                 case Enums.Affinity.Chalice:
                     PlayerData.ChaliceCardsOwned.Add(card.CardData);
-                    if (equippedCards < GlobalNumbers.MAX_DECK_SIZE) {
+                    if (equippedCards < MAX_DECK_SIZE) {
                         PlayerData.ChaliceCards.Add(card.CardData);
                         equippedCards++;
                     }
                     break;
                 case Enums.Affinity.Pentacle:
                     PlayerData.PentacleCardsOwned.Add(card.CardData);
-                    if (equippedCards < GlobalNumbers.MAX_DECK_SIZE) {
+                    if (equippedCards < MAX_DECK_SIZE) {
                         PlayerData.PentacleCards.Add(card.CardData);
                         equippedCards++;
                     }
                     break;
                 case Enums.Affinity.Staff:
                     PlayerData.StaffCardsOwned.Add(card.CardData);
-                    if (equippedCards < GlobalNumbers.MAX_DECK_SIZE) {
+                    if (equippedCards < MAX_DECK_SIZE) {
                         PlayerData.StaffCards.Add(card.CardData);
                         equippedCards++;
                     }
                     break;
                 case Enums.Affinity.Sword:
                     PlayerData.SwordCardsOwned.Add(card.CardData);
-                    if (equippedCards < GlobalNumbers.MAX_DECK_SIZE) {
+                    if (equippedCards < MAX_DECK_SIZE) {
                         PlayerData.SwordCards.Add(card.CardData);
                         equippedCards++;
                     }

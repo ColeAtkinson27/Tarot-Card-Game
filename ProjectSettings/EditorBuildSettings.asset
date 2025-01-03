@@ -29,4 +29,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Fight Priestess.unity
     guid: 322c44c0b6afc42438a49283b15d16c4
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 989a31c15b94a3b40bdf032904538d0c, type: 2}

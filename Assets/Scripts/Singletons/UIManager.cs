@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static Constants;
 
 public class UIManager : MonoBehaviour {
     private static UIManager instance;
@@ -74,7 +75,7 @@ public class UIManager : MonoBehaviour {
         while (count < 1) {
             curtainLeft.rectTransform.position = Vector3.Lerp(leftStart, leftEnd, count);
             curtainRight.rectTransform.position = Vector3.Lerp(rightStart, rightEnd, count);
-            count += Time.deltaTime / GlobalNumbers.CURTAIN_MOVE_RATE;
+            count += Time.deltaTime / CURTAIN_MOVE_RATE;
             yield return null;
         }
         curtainLeft.rectTransform.position = new Vector3(-Screen.width * 1.2f / 4, Screen.height / 2, 0);
@@ -89,7 +90,7 @@ public class UIManager : MonoBehaviour {
         while (count < 1) {
             curtainLeft.rectTransform.position = Vector3.Lerp(leftStart, leftEnd, count);
             curtainRight.rectTransform.position = Vector3.Lerp(rightStart, rightEnd, count);
-            count += Time.deltaTime / GlobalNumbers.CURTAIN_MOVE_RATE;
+            count += Time.deltaTime / CURTAIN_MOVE_RATE;
             yield return null;
         }
         curtainLeft.rectTransform.position = new Vector3(Screen.width / 4, Screen.height / 2, 0);

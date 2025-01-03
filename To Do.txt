@@ -1,0 +1,13 @@
+Menus
+	- Saving/Loading Game
+	- New Game
+
+Combat
+	- Enemy HP bars
+	- Enemy status symbols
+	- Combat should be confined to a single instance
+	- Remove "base" scene
+
+Town
+	- Deck building
+	- Reorder party
